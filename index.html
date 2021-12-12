@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="light">
+  <head>
+    <meta charset="utf-8">
+    <html lang="de-de">
+    <!--<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">  Apple App icon -->
+    <!--<link rel="icon" href="images/icons/icon-512x512.png" type="image/png">  TAB-Bild -->
+    <meta name="theme-color" content="black"/> <!-- Theme color -->
+    <!--<link rel="manifest" href="manifest.json">  Webapp manifest -->
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Put your description here."><!-- Beschreibung der Seite für die Google Suche-->
+    <title>NASA api</title>  <!-- Tab titel -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body onload="load_style(); load_nasa();" onresize="info_resize();">
+      <script src="style.js"></script>
+      <script src="nasa.js"></script>
+      <h1>NASA API</h1>
+      <hr>
+      <input id="eingabe"></input>
+      <button id="senden" onclick="init_nasa()">Senden</button>
+      <hr>
+      <div id="ausgabe"></div>
+
+      <button id="darkmode_button" onclick="darkmode(this)">Hell</button>
+
+      <div id="info_background">
+        <div id="info_container">
+        </div>
+      </div>
+  </body>
+</html>
