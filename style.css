@@ -121,6 +121,19 @@ a:hover{
     column-count:         1;
     }
     #info_container {
-        width:100%;
+        width:99%;
+        border-radius: 0;
+    }
+    #info_background{
+        padding:0;
+    }
+    table{
+        display:block;
+    }
+    ul{
+        padding: 0;
+    }
+    li{
+        margin:0;
     }
   }
