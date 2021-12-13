@@ -123,7 +123,7 @@ a:hover{
     #info_container {
         width:99%;
         border-radius: 0;
-        border: none;
+        border: 1px solid gray;
     }
     #info_background{
         padding:0;
