@@ -93,7 +93,9 @@ function start_nasa(data){
     ident = ident + 1;
     sessionStorage.setItem(ident, JSON.stringify(data.collection.items[i])); // daten mit mit identifier speichern
     if(data.collection.items[i].data[0].media_type == "image"){
-      ausgabe_img_add("<img class='picture' onclick='info_open(this)' id='"+ ident +"' src='"+ data.collection.items[i].links[0].href +"'></img>");
+      ausgabe_img_add("<img class='picture' onclick='info_open_img(this)' id='"+ ident +"' src='"+ data.collection.items[i].links[0].href +"'></img>");
+    }else if(data.collection.items[i].data[0].media_type == "video"){
+      ausgabe_img_add("<img class='picture video' onclick='info_open_video(this)' id='"+ ident +"' src='"+ data.collection.items[i].links[0].href +"'></img>");
     }
     if(i == data.collection.items.length - 1 && data.collection.links[0].rel == "next"){
       next_page = data.collection.links[0].href;
@@ -111,7 +113,9 @@ async function start_nasa_nextPage(){
     ident = ident + 1;
     sessionStorage.setItem(ident, JSON.stringify(data.collection.items[i])); // daten mit mit identifier speichern
     if(data.collection.items[i].data[0].media_type == "image"){
-      ausgabe_img_add("<img class='picture' onclick='info_open(this)' id='"+ ident +"' src='"+ data.collection.items[i].links[0].href +"'></img>");
+      ausgabe_img_add("<img class='picture' onclick='info_open_img(this)' id='"+ ident +"' src='"+ data.collection.items[i].links[0].href +"'></img>");
+    }else if(data.collection.items[i].data[0].media_type == "video"){
+      ausgabe_img_add("<img class='picture video' onclick='info_open_video(this)' id='"+ ident +"' src='"+ data.collection.items[i].links[0].href +"'></img>");
     }
     if(i == data.collection.items.length - 1 && (data.collection.links[0].rel == "next" || data.collection.links[1].rel == "next")){
       next_page = data.collection.links[0].href;
@@ -127,7 +131,7 @@ function nasa_show_info(data){
   ausgabe_add("<hr style='width:15%'><div id='ausgabe_img'></div>");
 }
 
-async function info_open(img){
+async function info_open_img(img){
   var data_img = JSON.parse(sessionStorage.getItem(img.id));
   var data;
   info_container.innerHTML = ""; 
@@ -159,5 +163,39 @@ async function info_open(img){
     }
   }
 
+  info_resize();
+}
+
+async function info_open_video(vid){
+  var data_vid = JSON.parse(sessionStorage.getItem(vid.id));
+  console.log(data_vid);
+  var data;
+  info_container.innerHTML = ""; 
+  info_background.style.display = "block";
+  body.style.overflow = "hidden";
+  info_container_add("<h1>"+ data_vid.data[0].title +"</h1><div id='video'></div><p>"+ data_vid.data[0].description +"</p><hr><h2>Daten</h2><table><tbody><tr><th>Nasa Id</th><td>"+ data_vid.data[0].nasa_id +"</td></tr><tr><th>Aufnahmedatum</th><td>"+ data_vid.data[0].date_created +"</td></tr><tr><th>Ort</th><td>"+ data_vid.data[0].location +"</td></tr><tr><th>Fotograf</th><td>"+ data_vid.data[0].photographer +"</td></tr><tr><th>Nasa Center</th><td>"+ data_vid.data[0].center +"</td></tr></tbody></table><hr><h2>Links zu diesem Element:</h2><ul id='linklist'></ul>");
+  await data_get(data_vid.href);
+  console.log(data_vid);
+  data = data_temp;
+  for(i=0; i<data.length; i++){
+    if(data[i].substr(-11) == "preview.mp4"){
+      console.log(data[i]);
+      info_container_add("<video class='info_container_img' src="+ data[i].replace(/ /g,"%20") +" controls></video>", "video", "add");
+    }/*else if(data[i].substr(-10) == "medium.jpg"){
+      info_container_add("<li><a href='"+ data[i] +"' target='_blank'>mittleres Bild</a></li>", "linklist", "add");
+    }else if(data[i].substr(-8) == "orig.tif"){
+      info_container_add("<li><a href='"+ data[i] +"' target='_blank'>original Bild</a></li>", "linklist", "add");
+    }else if(data[i].substr(-9) == "small.jpg"){
+      info_container_add("<li><a href='"+ data[i] +"' target='_blank'>kleines Bild</a></li>", "linklist", "add");
+    }else if(data[i].substr(-9) == "thumb.jpg"){
+      info_container_add("<li><a href='"+ data[i] +"' target='_blank'>thumb Bild</a></li>", "linklist", "add");
+    }else if(data[i].substr(-13) == "metadata.json"){
+      info_container_add("<li><a href='"+ data[i] +"' target='_blank'>Metadaten</a></li>", "linklist", "add");
+    }*/else{
+      console.log("KEIN BILD: "+ data[i]);
+      info_container_add("<li><a href='"+ data[i] +"' target='_blank'>"+ data[i] +"</a></li>", "linklist", "add");
+    }
+  }
+  
   info_resize();
 }
