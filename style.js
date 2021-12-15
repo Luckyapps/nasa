@@ -54,8 +54,14 @@ function info_resize(){
     console.log("Feldresize");
 }
 
-function info_close(){
-    info_background.style.display = "none";
-    info_container.innerHTML = "";
-    body.style.overflow = "auto";
+function info_close(event){
+    if(event.target == this){
+        info_background.style.display = "none";
+        info_container.innerHTML = "";
+        body.style.overflow = "auto";
+    }else if(body.clientWidth <= 500){
+        info_background.style.display = "none";
+        info_container.innerHTML = "";
+        body.style.overflow = "auto";
+    }
 }
