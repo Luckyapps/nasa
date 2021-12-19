@@ -159,6 +159,8 @@ a:hover{
         position: fixed;
         border: none;
         border-top: 1px solid red;
+        padding:0;
+        font-size:3em;
     }
     table{
         display:block;
