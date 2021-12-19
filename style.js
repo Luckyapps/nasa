@@ -1,14 +1,16 @@
-var html, body, darkmode_button, fensterBreite, fensterHoehe, info_background; //Variablen Definieren
+var html, body, darkmode_button, fensterBreite, fensterHoehe, info_background, info_container_close; //Variablen Definieren
 
 function load_style(){
     //Styleelemente in Variablen 
     info_background = document.getElementById("info_background");
     info_conainer = document.getElementById("info_container");
+    info_container_close = document.getElementById("info_container_close");
     darkmode_button = document.getElementById("darkmode_button"); 
     html = document.getElementsByTagName("html")[0];
     body = document.getElementsByTagName("body")[0];
 
     info_background.addEventListener("click", info_close);
+    info_container_close.addEventListener("click", info_close);
 
     info_resize();
 
