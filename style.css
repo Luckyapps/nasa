@@ -113,6 +113,10 @@ button{
     margin-top:1.25em;
 }
 
+#info_container p{
+    padding: 0 1em 0 1em;
+}
+
 .info_container_img{
     max-width: 50%;
     max-height: 50%;
@@ -126,6 +130,7 @@ table{
 
 #linklist{
     list-style-type: none;
+    padding: 0 1em 0 1em;
 }
 a{color: 
     #00adad;
@@ -175,6 +180,9 @@ a:hover{
         border-radius: 0;
         border: 1px solid gray;
         padding-bottom: 2em;
+    }
+    #linklist{
+        margin-bottom:4em;
     }
     #info_background{
         padding:0;
