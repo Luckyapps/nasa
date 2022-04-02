@@ -88,7 +88,8 @@ button{
     z-index: 2;
     padding-bottom:1em;
     border:1px solid black;
-    border-radius: 10px
+    border-radius: 10px;
+    margin-bottom: 30px;
 }
 
 #info_container_close{
@@ -132,6 +133,18 @@ table{
     list-style-type: none;
     padding: 0 1em 0 1em;
 }
+
+#linklist li{
+    margin:1em;
+}
+
+#linklist hr{
+    width: 100px;
+    padding:0;
+    background-color: lightgray;
+    border-color: lightgray;
+}
+
 a{color: 
     #00adad;
 }

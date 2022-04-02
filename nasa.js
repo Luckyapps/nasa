@@ -118,7 +118,7 @@ async function start_nasa_nextPage(){
       ausgabe_img_add("<img class='picture video' onclick='info_open_video(this)' id='"+ ident +"' src='"+ data.collection.items[i].links[0].href +"'></img>");
     }
     if(i == data.collection.items.length - 1 && (data.collection.links[0].rel == "next" || data.collection.links[1].rel == "next")){
-      next_page = data.collection.links[0].href;
+      next_page = data.collection.links[1].href;
       ausgabe_add("<button id='next_page' onclick='init_nasa_nextPage()'>Nächste Seite laden</button>");
     }
   }
@@ -163,6 +163,7 @@ async function info_open_img(img){
       //console.log("KEIN BILD: "+ data[i]);
       info_container_add("<li><a href='"+ data[i] +"' target='_blank'>"+ data[i] +"</a></li>", "linklist", "add");
     }
+    info_container_add("<hr>", "linklist", "add");
   }
   global_data = data_img;
   info_container_add("<li><a href='#' onclick='open_additional_data();'>Zusätzliche Daten in Konsole anzeigen</a></li>", "linklist", "add");
@@ -200,6 +201,7 @@ async function info_open_video(vid){
       //console.log("KEIN BILD: "+ data[i]);
       info_container_add("<li><a href='"+ data[i] +"' target='_blank'>"+ data[i] +"</a></li>", "linklist", "add");
     }
+    info_container_add("<hr>", "linklist", "add");
   }
   global_data = data_vid;
   info_container_add("<li><a href='#' onclick='open_additional_data();'>Zusätzliche Daten in Konsole anzeigen</a></li>", "linklist", "add");
