@@ -36,7 +36,9 @@ function get_nasa(suche){ // Daten holen
 
 function get_add(adress){
   return new Promise(resolve => {
-  adress = adress.replace("http", "https");
+  if(adress.search("https") == -1){
+    adress = adress.replace("http", "https");
+  }
   var requestURL = adress;
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
@@ -107,7 +109,6 @@ function start_nasa(data){
 
 async function start_nasa_nextPage(){
   element_remove("next_page");
-  next_page = next_page.replace("http", "https");
   await data_get(next_page);
   var data = data_temp;
   console.log(data);
