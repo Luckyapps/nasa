@@ -106,6 +106,7 @@ function start_nasa(data){
 
 async function start_nasa_nextPage(){
   element_remove("next_page");
+  next_page = next_page.replace("http", "https");
   await data_get(next_page);
   var data = data_temp;
   console.log(data);
