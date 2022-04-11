@@ -26,7 +26,6 @@ function load_style(){
     }else{
         localStorage.setItem("darkmode", false);
     }
-
 }
 
 function style_toggle(mode){ // Darkmode toggle (mode:[light,dark])
@@ -61,9 +60,9 @@ function info_close(event){
         info_background.style.display = "none";
         info_container.innerHTML = "";
         body.style.overflow = "auto";
-    }else if(body.clientWidth <= 500){
+    }/*else if(body.clientWidth <= 500){
         info_background.style.display = "none";
         info_container.innerHTML = "";
         body.style.overflow = "auto";
-    }
+    }*/
 }
