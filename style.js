@@ -26,7 +26,6 @@ function load_style(){
     }else{
         localStorage.setItem("darkmode", false);
     }
-
 }
 
 function style_toggle(mode){ // Darkmode toggle (mode:[light,dark])
