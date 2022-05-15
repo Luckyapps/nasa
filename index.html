@@ -11,10 +11,12 @@
     <meta name="description" content="Put your description here."><!-- Beschreibung der Seite für die Google Suche-->
     <title>NASA api</title>  <!-- Tab titel -->
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/info_container.css" rel="stylesheet" type="text/css" />
   </head>
-  <body onload="load_style(); load_nasa();" onresize="info_resize();">
+  <body onload="load_style(); load_nasa();">
       <script src="style.js"></script>
       <script src="nasa.js"></script>
+      <script src="stylesheets/info_container.js"></script>
       <h1>NASA API v1</h1>
       <hr>
       <input id="eingabe"></input>
@@ -26,8 +28,12 @@
 
       <div id="info_background">
         <div id="info_container">
-          <div id="info_container_close">X</div>
+          <div id="info_container_toolbar">
+            <div style="cursor:help" id="info_container_info_open">?</div>
+            <div id="info_container_close">X</div>
+          </div>
         </div>
       </div>
+      <div title="Versionsinformation" id="watermark">App by <a href="">Luckyapps</a> | dvc.1.22031.0</div>
   </body>
 </html>

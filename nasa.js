@@ -171,7 +171,7 @@ async function info_open_img(img){
   global_data = data_img;
   info_container_add("<li><a href='#' onclick='open_additional_data();'>Zusätzliche Daten in Konsole anzeigen</a></li>", "linklist", "add");
 
-  document.getElementById("info_container_close").addEventListener("click", info_close);
+  //document.getElementById("info_container_close").addEventListener("click", info_close);
   //info_resize();
 }
 
@@ -179,9 +179,10 @@ async function info_open_video(vid){
   var data_vid = JSON.parse(sessionStorage.getItem(vid.id));
   //console.log(data_vid);
   var data;
-  info_container.innerHTML = "<div id='info_container_close'>X</div>"; 
-  info_background.style.display = "block";
-  body.style.overflow = "hidden";
+  info_container.innerHTML = "<div id='info_container_toolbar'><div style='cursor:help' id='info_container_info_open'></div><div id='info_container_close'>X</div></div>"; 
+  /*info_background.style.display = "block";
+  body.style.overflow = "hidden";*/
+
   info_container_add("<h1>"+ data_vid.data[0].title +"</h1><div id='video'></div><p>"+ data_vid.data[0].description +"</p><hr><h2>Daten</h2><table><tbody><tr><th>Nasa Id</th><td>"+ data_vid.data[0].nasa_id +"</td></tr><tr><th>Aufnahmedatum</th><td>"+ data_vid.data[0].date_created +"</td></tr><tr><th>Ort</th><td>"+ data_vid.data[0].location +"</td></tr><tr><th>Fotograf</th><td>"+ data_vid.data[0].photographer +"</td></tr><tr><th>Nasa Center</th><td>"+ data_vid.data[0].center +"</td></tr></tbody></table><hr><h2>Links zu diesem Element:</h2><ul id='linklist'></ul>");
   await data_get(data_vid.href);
   //console.log(data_vid);
@@ -208,11 +209,19 @@ async function info_open_video(vid){
   }
   global_data = data_vid;
   info_container_add("<li><a href='#' onclick='open_additional_data();'>Zusätzliche Daten in Konsole anzeigen</a></li>", "linklist", "add");
-
-  document.getElementById("info_container_close").addEventListener("click", info_close);
+  //document.getElementById("info_container_close").addEventListener("click", info_close);
   //info_resize();
+  prepare_info_container();
 }
 
 function open_additional_data(){
   console.log(global_data);
+}
+
+function prepare_info_container(){
+  info_container_close_button = document.getElementById("info_container_close"); //Experimentell: muss neu definiert werden 
+  info_container_info_button = document.getElementById("info_container_info_open"); //Experimentell: muss neu definiert werden 
+  info_container = document.getElementById("info_container");
+  info_container_innerHTML = info_container.innerHTML;
+  info_container_open();
 }
