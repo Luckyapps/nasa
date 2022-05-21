@@ -13,6 +13,7 @@
     font-weight: bold;
     padding: 3px;
     border-radius: 8px;
+    display: none;
 }
 
 #watermark:hover{
