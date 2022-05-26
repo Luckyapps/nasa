@@ -25,12 +25,14 @@
     /*display: grid;*/
     display: none;
     position: fixed;
-    justify-content: center;
+    padding-top: 1em;
+    /*justify-content: center;*/
     left:0;
     top: 0;
     height: 100%;
     /*overflow: auto;*/
     align-items: start;
+    background-color: #0000005e;
 }
 
 #info_container{
@@ -38,19 +40,31 @@
     /*background-color: #86868642;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);*/
-    background-color: #868686f2;
+    text-align: center;
+    background-color: /*#868686f2*/gray;
     border: 2px solid #595959;
     border-radius: 1em;
     display: grid;
-    width: fit-content;
+    /*width: fit-content;
     padding-left:1em;
     padding-right: 1em;
     margin-left:1em;
-    margin-right: 1em;
+    margin-right: 1em;*/
+    margin: auto;
+    padding: 0;
+    width: 80%;
     grid-row-gap: 1em;
     position:relative;
     z-index: 930;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+#info_container hr{
+    width: 90%;
+}
+
+#info_container ul hr{
+    width: 30%;
 }
 
 #version_history_toolbar{
@@ -101,6 +115,47 @@
     100%{top:100%;}
 }
 
+@media (max-width: 500px) {
+    #ausgabe_img {
+        grid-template-columns: auto;
+    /*-moz-column-count:    1;
+    -webkit-column-count: 1;
+    column-count:         1;*/
+    }
+    #info_container {
+        width:99%;
+        min-height: 100%;
+        border-radius: 0;
+        border: 2px solid gray;
+        padding-bottom: 2em;
+    }
+    #linklist{
+        margin-bottom:4em;
+    }
+    #info_background{
+        padding:0;
+    }
+    #info_container_close{
+        bottom: 0px;
+        width: 100%;
+        border-radius: 0;
+        position: fixed;
+        border: none;
+        border-top: 1px solid red;
+        padding:0;
+        font-size:3em;
+    }
+    table{
+        display:block;
+    }
+    ul{
+        padding: 0;
+    }
+    li{
+        margin:0;
+    }
+  }
+
 /*EXPERIMENTE*/
 .watermark_mousedown{
     font-size:0.9em; 
@@ -121,9 +176,9 @@
         -webkit-backdrop-filter: blur(12px);
         background-color: #0000004d;
     }
-    #info_container{
+    /*#info_container{
         background-color: #86868642;
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-    }
+    }*/
   }
