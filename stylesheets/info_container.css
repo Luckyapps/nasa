@@ -60,11 +60,14 @@
 }
 
 #info_container hr{
-    width: 90%;
+    width: 100%;
 }
 
 #info_container ul hr{
-    width: 30%;
+    width: 100px;
+    padding:0;
+    background-color: lightgray;
+    border-color: lightgray;
 }
 
 #version_history_toolbar{
