@@ -139,10 +139,11 @@ function nasa_show_info(data){
 async function info_open_img(img){
   var data_img = JSON.parse(sessionStorage.getItem(img.id));
   var data;
-  info_container.innerHTML = "<div id='info_container_close'>X</div>"; 
+  //info_container.innerHTML = "<div id='info_container_close'>X</div>"; 
+  info_container.innerHTML = "<div id='info_container_toolbar'><div style='cursor:help' id='info_container_info_open'></div><div id='info_container_close'>X</div></div>"; 
   info_container_add("<h1>"+ data_img.data[0].title +"</h1><img class='info_container_img' src="+ data_img.links[0].href +"></img><p>"+ data_img.data[0].description +"</p><hr><h2>Daten</h2><table><tbody><tr><th>Nasa Id</th><td>"+ data_img.data[0].nasa_id +"</td></tr><tr><th>Aufnahmedatum</th><td>"+ data_img.data[0].date_created +"</td></tr><tr><th>Ort</th><td>"+ data_img.data[0].location +"</td></tr><tr><th>Fotograf</th><td>"+ data_img.data[0].photographer +"</td></tr><tr><th>Nasa Center</th><td>"+ data_img.data[0].center +"</td></tr></tbody></table><hr><h2>Links zu diesem Element:</h2><ul id='linklist'></ul>");
-  info_background.style.display = "block";
-  body.style.overflow = "hidden";
+  //info_background.style.display = "block";
+  //body.style.overflow = "hidden";
   await data_get(data_img.href);
   //console.log(data_img);
   data = data_temp;
@@ -173,6 +174,7 @@ async function info_open_img(img){
 
   //document.getElementById("info_container_close").addEventListener("click", info_close);
   //info_resize();
+  prepare_info_container();
 }
 
 async function info_open_video(vid){
