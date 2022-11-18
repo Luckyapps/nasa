@@ -1,0 +1,14 @@
+.header_title{
+    background-color: aqua;
+    border:2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 10px 5px 5px;
+}
+
+.header_title h2{
+    margin-top:0;
+}

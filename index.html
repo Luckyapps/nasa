@@ -1,33 +1,104 @@
 <!DOCTYPE html>
-<html class="light">
-  <head>
-    <meta charset="utf-8">
-    <html lang="de-de">
-    <!--<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">  Apple App icon -->
-    <!--TAB-Bild --><link rel="icon" href="media/logo_1440.png" type="image/png">  
-    <meta name="theme-color" content="black"/> <!-- Theme color -->
-    <!--<link rel="manifest" href="manifest.json">  Webapp manifest -->
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Put your description here."><!-- Beschreibung der Seite für die Google Suche-->
-    <title>NASA api</title>  <!-- Tab titel -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body onload="load_style(); load_nasa();" onresize="info_resize();">
-      <script src="style.js"></script>
-      <script src="nasa.js"></script>
-      <h1>NASA API v1</h1>
-      <hr>
-      <input id="eingabe"></input>
-      <button id="senden" onclick="init_nasa()">Senden</button>
-      <hr>
-      <div id="ausgabe"></div>
+<html><head></head>
+  <body>
+    <script id="page_config_script">
+        var page_config_init = {
+            source: "",
+            modules:{
+                meta: {
+                    active: true,
+                    html_embed: true,
+                    title: "NASA API",
+                    apple_icon: "images/icons/icon-192x192.png",
+                    icon: {
+                        href: "images/icons/icon-512x512.png",
+                        type: "image/png",
+                    },
+                    description: "Beschreibung",
+                    theme_color: "black",
+                    viewport: "width=device-width",
+                    charset: "utf-8",
+                    manifest: "manifest.json"
+                },
+                header: {
+                    active: false,
+                    title: "Luckyapp5",
+                    subtitle: "Redesign"
+                },
+                navbar: {
+                    active: false,
+                    custom_links: false,
+                    links: [
+                        {
+                            text: "Text, der erscheinen Soll",
+                            href: "absolute adresse",
+                            active: true
+                        }
+                    ]
+                },
+                preset: {
+                    active: true, //Muss true
+                    type: "grid", //false, zum deaktivieren -->error ["grid"]false
+                    prop: "2columns"
+                },
+                content: {
+                    active: true,
+                },
+                footer: {
+                    active: false,
+                    custom_links: false,
+                    links: [
+                        {
+                            text: "Text, der erscheinen Soll",
+                            href: "absolute adresse"
+                        }
+                    ]
+                },
+                version_history: {
+                    active: true,
+                    watermark: false
+                },
+                updates: {
+                    active: true,
+                    updatelist: false,
+                    updatebanner: true
+                },
+                fileloader: {
+                    active: true,
+                    files: {
+                        js_main: "nasa.js"
+                    }, //links absolut von luckyapp_core.js aus erstes js file muss js_main sein
+                    functions:["nasa_init"] //nur Name, ohne () |--> geht nur, wenn js_main bei files gesetzt ist
+                }
+            },
+            appearance: {
+                font_style: "calibri",
+                theme: "light"
+            }
+        }
+    </script>
+    <script src="nasa_core.js"></script>
 
-      <button id="darkmode_button" onclick="darkmode(this)">Hell</button>
+    <div id="wall"><div id="ball_container"><div id="ball"></div><div id="bar_container"><div id="bar"></div></div></div></div>
 
-      <div id="info_background">
-        <div id="info_container">
-          <div id="info_container_close">X</div>
-        </div>
-      </div>
+    <div id="content" class="grid_100" style="display:none">
+
+        <div class="cont_grid _booth">
+            <div class="card" style="display:flex; flex-direction: column;align-items: center;">
+                <div style="width: 100%;display: flex;justify-content: center; flex-direction: column; align-items: center; border-bottom: 1px solid white; margin-bottom:20px">
+                    <h1 style="margin:0">Nasa Api Abfrage</h1>
+                    <h2 style="margin-top:0">By Luckyapps</h2>  
+                </div>
+                <div style="border-bottom: 1px solid white; padding-bottom:20px; width: 100%; display: flex; justify-content: center;">
+                   <input id="nasa_input"></input> 
+                   <button id="nasa_input_but">Senden</button>
+                </div>
+            </div>
+            <div id="nasa_output" class="card">
+            </div>
+        </div> 
+
+    </div>
+
   </body>
 </html>

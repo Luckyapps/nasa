@@ -1,0 +1,33 @@
+.header_navbar{
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    border: 1px solid yellow;
+    border-radius: 5px 5px 10px 10px;
+}
+
+.header_navbar a{
+    color: red !important;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 1em;
+    border-right: 1px solid gray;
+}
+
+.header_navbar :hover{
+    background-color: rgba(95, 95, 31, 0.562);
+}
+
+@media screen and (max-width: 400px){
+    .header_navbar{
+        flex-direction: column;
+        align-items: normal;
+    }
+    .header_navbar a{
+        border-bottom: 1px solid gray;
+        border-right: none;
+        text-align: center;
+    }
+}

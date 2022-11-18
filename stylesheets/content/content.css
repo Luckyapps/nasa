@@ -1,0 +1,48 @@
+#content{
+    display: grid;
+    grid-template-columns: minmax(60%, 100%) auto;
+    gap: 10px;
+}
+
+.card{
+    background-color: transparent;
+    color: white;
+    padding: 0 20px 0 20px;
+    /*border: 2px solid yellow;*/
+    border-radius: 10px;
+    backdrop-filter: blur(12px);
+}
+
+.cont_grid{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+._left{
+}
+
+._right{
+}
+
+._both{
+    grid-column: 1 / span2;
+}
+
+._middle{
+    align-items: center;
+}
+
+.stick{
+    position: sticky;
+    top:10px;
+}
+
+@media screen and (max-width: 800px){
+    #content{
+        grid-template-columns: none;
+    }
+    ._first{
+        grid-area: 1;
+    }
+}

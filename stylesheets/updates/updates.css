@@ -1,0 +1,45 @@
+#updatelist li:hover{
+    text-decoration: underline;
+    color: #00ffff;
+    cursor: pointer;
+}
+
+#updates_info_container{
+    text-align: center;
+}
+
+#updates_info_container ul{
+    text-align: left;
+}
+
+#updatebanner_container{
+    position: fixed;
+    bottom: 40px;
+    left: 0px;
+    width: 100%;
+    display: none;
+    justify-content: center;
+}
+
+#updatebanner{
+    position:relative;
+    margin: 0 20px 0 20px;
+    box-sizing: border-box;
+    background-color: green;
+    padding: 0 20px 0 20px;
+    border-radius: 10px;
+    cursor: alias;
+}
+
+#updatebanner_close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    color:red;
+    font-weight: bold;
+}
+
+.update_{
+    padding: 10px;
+}
