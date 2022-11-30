@@ -134,8 +134,11 @@ async function get_data(url){
 
     if(!url.includes("https")){
         if(url.includes("http")){
-            url.replace("http","https");
+            url = url.replace("http","https");
+            console.log(url);
         }
+    }else{
+        console.log(url);
     }
     
     await fetch(url)
