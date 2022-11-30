@@ -254,7 +254,8 @@ function load_meta(){
                 +'<meta charset="'+ luckyapp_core.page_config.modules.meta.charset +'">'
                 +'<meta name="viewport" content="'+ luckyapp_core.page_config.modules.meta.viewport +'">'
                 +'<title>'+ luckyapp_core.page_config.modules.meta.title +'</title>'
-                +'<link href="'+ get_link("style.css") +'" rel="stylesheet" type="text/css" />';
+                +'<link href="'+ get_link("style.css") +'" rel="stylesheet" type="text/css" />'
+                +'<link rel="manifest" href="'+ luckyapp_core.page_config.modules.meta.manifest +'">';
         }else{
             var meta_links = document.getElementsByTagName("link");
             var meta_metas = document.getElementsByTagName("meta");
