@@ -175,7 +175,7 @@
     box-shadow: none;
   }
 
-#nasa_output img:hover{
+/*#nasa_output img:hover{
     position: relative;
     top: -10%;
     left: -10%;
@@ -183,7 +183,7 @@
     height: 120%;
     box-shadow: 0px 0px 15px 0px #000000;
     z-index: 800;
-}
+}*/
 
 @media (max-width: 800px) {
     #n_flyin_container{
