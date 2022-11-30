@@ -61,7 +61,7 @@ async function next_page(source){
     for(i=0;i<data.items.length;i++){
         for(j=0;j<data.items[i].links.length;j++){
             if(data.items[i].links[j].render == "image"){
-                output.innerHTML += `<img onclick="info_open('`+ data.href +`', '`+ i +`')" src="`+ data.items[i].links[j].href +`"></img>`;
+                output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' src='"+ data.items[i].links[j].href +"'></img>";
             }
         }
     }
@@ -131,6 +131,12 @@ async function info_open(url, index){
 async function get_data(url){
     //var url = "https://www.faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt";
     var data
+
+    if(!url.includes("https")){
+        if(url.includes("http")){
+            url.replace("http","https");
+        }
+    }
     
     await fetch(url)
     
