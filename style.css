@@ -9,6 +9,7 @@ html{
 
 h1, h2{
   text-decoration: underline;
+  text-align: center;
 }
 
 a{
@@ -82,18 +83,4 @@ a:hover{
     0%{top:0px;background-color:gray}
     50%{top:-50px;background-color:gainsboro}
     100%{top:0px;background-color:gray}
-  }
-
-  #nasa_output{
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    gap: 20px;
-    justify-content: center;
-  }
-
-  #nasa_output img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
   }
