@@ -106,6 +106,14 @@
     background-color: black;
 }
 
+.fi_video{
+}
+
+.fi_img_video{
+    border: 3px solid green;
+    cursor: pointer;
+}
+
 #fi_sources{
     margin-top:0;
 }
@@ -218,6 +226,7 @@
     cursor:pointer;
     transition: all 0.3s;
     border-radius: 10px;
+    z-index: 900;
 }
 
 #next_page_but:hover{

@@ -31,9 +31,11 @@ async function nasa_start(subject){
         output.innerHTML = "";
     }
     for(i=0;i<data.items.length;i++){
-        for(j=0;j<data.items[i].links.length;j++){
-            if(data.items[i].links[j].render == "image"){
-                output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' src='"+ data.items[i].links[j].href +"'></img>";
+        if(data.items[i].links){
+            for(j=0;j<data.items[i].links.length;j++){
+                if(data.items[i].links[j].render == "image"){
+                    output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' src='"+ data.items[i].links[j].href +"'></img>";
+                }
             }
         }
     }
@@ -68,6 +70,7 @@ async function next_page(source){
     }
 }
 
+
 async function info_open(url, index){
     var data = await get_data(url);
     data = data.collection.items[index];
@@ -76,6 +79,19 @@ async function info_open(url, index){
     console.log(collection);
     document.getElementById("fi_title").innerHTML = data.data[0].title;
     document.getElementById("fi_img").src = data.links[0].href;
+    if(data.data[0].media_type == "video"){
+        console.log("video");
+        document.getElementById("fi_img").classList.add("fi_img_video");
+        document.getElementById("fi_img").addEventListener("click", ()=>{
+            console.log("Lade Video");
+            for(u=0;u<collection.length;u++){
+                if(collection[u].includes("preview.mp4")){
+                    var vidsrc = collection[u];
+                }
+            }
+            document.getElementById("fi_img").outerHTML = "<video class='fi_video' id='fi_img' controls src='"+ vidsrc +"'>";
+        });
+    }
     document.getElementById("fi_description").innerHTML = data.data[0].description;
     document.getElementById("fi_sources").innerHTML = "";
     datas = data.data[0];
@@ -146,5 +162,6 @@ function n_flyin_close(){
     setTimeout(function() {
       n_flyin_background.style.display = "none";
       document.body.style.overflow = "auto";
+      document.getElementById("fi_img").outerHTML = "<img id='fi_img'></img>";
     }, /*timeout_duration*/500); 
 }
