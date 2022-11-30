@@ -1,12 +1,12 @@
 {
-    "name": "Luckyapp5",
-    "short_name": "Luckyapp5",
+    "name": "Luckyapp Nasa Api Abfrage",
+    "short_name": "Nasa",
     "theme_color": "black",
     "background_color": "black",
     "display_override": ["window-controls-overlay"],
     "display": "standalone",
-    "Scope": "/Luckyapp",
-    "start_url": "/Luckyapp/index.html",
+    "Scope": "/nasa",
+    "start_url": "/nasa/index.html",
     "icons": [
       {
         "src": "images/icons/icon-72x72.png",
@@ -36,8 +36,7 @@
       {
         "src": "images/icons/icon-192x192.png",
         "sizes": "192x192",
-        "type": "image/png",
-        "purpose": "any maskable"
+        "type": "image/png"
       },
       {
         "src": "images/icons/icon-384x384.png",
