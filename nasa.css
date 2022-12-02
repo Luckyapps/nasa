@@ -205,6 +205,15 @@
     }
 }
 
+/* Safari 10.1+ */
+
+@media not all and (min-resolution:.001dpcm) { @media {
+    #nasa_output img{ 
+        height: auto;
+        border: 3px solid red;
+    }
+}}
+
 
 
 
