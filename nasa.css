@@ -237,7 +237,7 @@
 
 
 #next_page_but{
-    display: none;
+    /*display: none;
     position: absolute;
     left:50%;
     bottom: 10px;
@@ -248,7 +248,16 @@
     cursor:pointer;
     transition: all 0.3s;
     border-radius: 10px;
+    z-index: 900;*/
+    display: none;
+    padding: 10px;
+    background: purple;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 10px;
     z-index: 900;
+    grid-column: 1 / 5;
 }
 
 #next_page_but:hover{

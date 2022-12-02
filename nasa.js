@@ -19,17 +19,7 @@ async function nasa_start(subject){
     var data = await get_data("https://images-api.nasa.gov/search?q="+ subject);
     data = data.collection;
     console.log(data);
-    if(data.links){
-        for(k=0;k<data.links.length;k++){
-            if(data.links[k].rel == "next"){
-                output.innerHTML = "<div id='next_page_but' onclick='next_page(`"+ data.links[k].href +"`)'>Laden</div>";
-            }else{
-                output.innerHTML = ""; 
-            }
-        }
-    }else{
-        output.innerHTML = "";
-    }
+    document.getElementById("results").innerHTML = data.metadata.total_hits;
     for(i=0;i<data.items.length;i++){
         if(data.items[i].links){
             for(j=0;j<data.items[i].links.length;j++){
@@ -39,6 +29,17 @@ async function nasa_start(subject){
             }
         }
     }
+    if(data.links){
+        for(k=0;k<data.links.length;k++){
+            if(data.links[k].rel == "next"){
+                output.innerHTML += "<div id='next_page_but' onclick='next_page(`"+ data.links[k].href +"`)'>Laden</div>";
+            }/*else{
+                output.innerHTML = ""; 
+            }*/
+        }
+    }/*else{
+        output.innerHTML = "";
+    }*/
     if(document.getElementById("next_page_but")){
         document.getElementById("next_page_but").style.display = "block";
     }
@@ -46,22 +47,25 @@ async function nasa_start(subject){
 
 async function next_page(source){
     console.log("next_page");
+    document.getElementById("next_page_but").remove();
     var data = await get_data(source.replace("http", "https"));
     data = data.collection;
     console.log(data);
+    for(i=0;i<data.items.length;i++){
+        if(data.items[i].links){
+            for(j=0;j<data.items[i].links.length;j++){
+                if(data.items[i].links[j].render == "image"){
+                    output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' src='"+ data.items[i].links[j].href +"'></img>";
+                }
+            }
+        }else{
+            output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' alt='NOPREVIEW'></img>";
+        }
+    }
     if(data.links){
         for(k=0;k<data.links.length;k++){
             if(data.links[k].rel == "next"){
-                document.getElementById("next_page_but").onclick = "next_page(`"+ data.links[k].href +"`)";
-            }else{
-            }
-        }
-    }else{
-    }
-    for(i=0;i<data.items.length;i++){
-        for(j=0;j<data.items[i].links.length;j++){
-            if(data.items[i].links[j].render == "image"){
-                output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' src='"+ data.items[i].links[j].href +"'></img>";
+                output.innerHTML += "<div id='next_page_but' onclick='next_page(`"+ data.links[k].href +"`)'>Laden</div>";
             }
         }
     }
