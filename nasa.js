@@ -103,9 +103,11 @@ async function info_open(url, index){
     datas = data.data[0];
     document.getElementById("fi_tab_center").innerHTML = datas.center;
     var keywords_string = "";
-    datas.keywords.forEach(element => {
-        keywords_string += "<div class='keyword'>"+ element.replace(",", "") +"</div>";
-    });
+    if(datas.keywords){
+        datas.keywords.forEach(element => {
+            keywords_string += "<div class='keyword'>"+ element.replace(",", "") +"</div>";
+        });
+    }
     document.getElementById("fi_tab_keywords").innerHTML = "<div class='keywords_container'>"+ keywords_string +"</div>";
     document.getElementById("fi_tab_location").innerHTML = datas.location;
     document.getElementById("fi_tab_media_type").innerHTML = datas.media_type;
