@@ -160,6 +160,7 @@
     grid-template-columns: 20% 20% 20% 20%;
     gap: 20px;
     justify-content: center;
+    align-items: stretch;
   }
 
   #nasa_output img{
