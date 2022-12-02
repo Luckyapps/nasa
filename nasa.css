@@ -235,7 +235,14 @@
 
 
 
-
+#results{
+    display:none;
+    padding: 5px;
+    border: 2px solid gray;
+    background-color: gray;
+    border-radius: 5px;
+    margin: 15px 0 10px 0;
+}
 
 #next_page_but{
     /*display: none;

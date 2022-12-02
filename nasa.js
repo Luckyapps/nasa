@@ -19,7 +19,8 @@ async function nasa_start(subject){
     var data = await get_data("https://images-api.nasa.gov/search?q="+ subject);
     data = data.collection;
     console.log(data);
-    //document.getElementById("results").innerHTML = data.metadata.total_hits;
+    document.getElementById("results").innerHTML = data.metadata.total_hits +" Ergebnisse gefunden";
+    document.getElementById("results").style.display = "block";
     for(i=0;i<data.items.length;i++){
         if(data.items[i].links){
             for(j=0;j<data.items[i].links.length;j++){
@@ -107,28 +108,44 @@ async function info_open(url, index){
     document.getElementById("fi_tab_keywords").innerHTML = "<div class='keywords_container'>"+ keywords_string +"</div>";
     document.getElementById("fi_tab_location").innerHTML = datas.location;
     document.getElementById("fi_tab_media_type").innerHTML = datas.media_type;
+    if(datas.media_type == "video"){
+        document.getElementById("fi_tab_media_type").style.backgroundColor = "#4d7e4d";
+    }else if(datas.media_type == "image"){
+        document.getElementById("fi_tab_media_type").style.backgroundColor = "#7e4d4d";
+    }
     document.getElementById("fi_tab_nasa_id").innerHTML = datas.nasa_id;
     document.getElementById("fi_tab_center").innerHTML = datas.center;
     document.getElementById("fi_tab_date_created").innerHTML = datas.date_created;
     document.getElementById("fi_tab_secondary_creator").innerHTML = datas.secondary_creator;
     document.getElementById("fi_tab_other").innerHTML = JSON.stringify(datas);
+    var links_unknown = "";
     for(u=0;u<collection.length;u++){
         if(collection[u].includes("metadata.json")){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Metadaten</a></li>";
         }else if(collection[u].includes("orig.jpg")){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Original JPG</a></li>";
         }else if(collection[u].includes("large.jpg")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Groß JPG</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Gross JPG</a></li>";
         }else if(collection[u].includes("medium.jpg")){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Medium JPG</a></li>";
         }else if(collection[u].includes("small.jpg")){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Klein JPG</a></li>";
         }else if(collection[u].includes("thumb.jpg")){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Thumb JPG</a></li>";
-        }else{
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>"+ collection[u] +"</a></li>";
+        }else if(collection[u].includes("large.mp4")){
+            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Grosses Video [mp4]</a></li>";
+        }else if(collection[u].includes("medium.mp4")){
+            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Mittelgrosses Video [mp4]</a></li>";
+        }else if(collection[u].includes("small.mp4")){
+            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Kleines Video [mp4]</a></li>";
+        }else if(collection[u].includes("orig.mp4")){
+            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Originalvideo [mp4]</a></li>";
+        }else if(collection[u].includes("preview.mp4")){
+            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Previewvideo [mp4]</a></li>";
+        }else {
+            links_unknown += "<li><a href='"+ collection[u] +"'>"+ collection[u] +"</a></li>";
         }
-    }
+    }document.getElementById("fi_sources").innerHTML += links_unknown;
     n_flyin_open();
 }
 
