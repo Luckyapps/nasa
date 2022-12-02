@@ -19,7 +19,7 @@ async function nasa_start(subject){
     var data = await get_data("https://images-api.nasa.gov/search?q="+ subject);
     data = data.collection;
     console.log(data);
-    document.getElementById("results").innerHTML = data.metadata.total_hits;
+    //document.getElementById("results").innerHTML = data.metadata.total_hits;
     for(i=0;i<data.items.length;i++){
         if(data.items[i].links){
             for(j=0;j<data.items[i].links.length;j++){
