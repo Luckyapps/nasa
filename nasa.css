@@ -209,15 +209,15 @@
 
 @media not all and (min-resolution:.001dpcm) { @media {
     #nasa_output img{ 
-        position: block;
+        position:unset;
         width: 100%;
         object-fit: cover;
         border-radius: 10px;
         cursor: pointer;
     }
     #nasa_output img:hover{
-        position: block;
-        top:auto;
+        position: unset;
+        top: auto;
         left: auto;
         width: 100%;
         height: auto;
