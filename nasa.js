@@ -95,7 +95,7 @@ async function info_open(url, index){
                     var vidsrc = collection[u];
                 }
             }
-            document.getElementById("fi_img").outerHTML = "<video class='fi_video' id='fi_img' controls src='"+ vidsrc +"'>";
+            document.getElementById("fi_img").outerHTML = "<video class='fi_video' id='fi_img' controls src='"+ http_fix(vidsrc) +"'>";
         });
     }
     document.getElementById("fi_description").innerHTML = data.data[0].description;
@@ -197,4 +197,15 @@ function n_flyin_close(){
       document.body.style.overflow = "auto";
       document.getElementById("fi_img").outerHTML = "<img id='fi_img'></img>";
     }, /*timeout_duration*/500); 
+}
+
+function http_fix(url){
+    if(!url.includes("https")){
+        if(url.includes("http")){
+            url = url.replace("http","https");
+            return url;
+        }
+    }else{
+        return url;
+    }
 }
