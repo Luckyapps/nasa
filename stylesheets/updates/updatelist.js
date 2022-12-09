@@ -2,10 +2,17 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.22124.0",
+            title: "Nasa Update 4|Dez22",
+            name:"",
+            date: "xxx",
+            type: "UPDATE",
+            description: "Einstellung für Bildgröße der Vorschau"
+        },{
             id: "dv.1.22123.0",
             title: "Nasa Update 3|Dez22",
             name:"",
-            date: "",
+            date: "09.12.2022",
             type: "UPDATE",
             description: "Services.js hinzugefügt: automatische änderung der Versionsnummer, Service-flyin |||||| n_flyin kann geschlossen werden, indem daneben geklickt wird."
         },{

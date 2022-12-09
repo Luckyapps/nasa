@@ -80,12 +80,28 @@ async function next_page(source){
 
 async function info_open(url, index){
     var data = await get_data(url);
-    data = data.collection.items[index];
+    data = data.collection.items[index]; //komplettes item
     console.log(data);
-    var collection = await get_data(data.href);
+    var collection = await get_data(data.href); //collection des elements
     console.log(collection);
     document.getElementById("fi_title").innerHTML = data.data[0].title;
-    document.getElementById("fi_img").src = data.links[0].href;
+    /*luckyapp_core.page_config.settings = {
+        preview_img:"thumb.jpg"
+    };*/
+    for(i=0;i<collection.length;i++){
+        if(luckyapp_core.page_config.settings){
+            if(luckyapp_core.page_config.settings.preview_img){
+                if(collection[i].includes(luckyapp_core.page_config.settings.preview_img)){
+                    document.getElementById("fi_img").src = collection[i];
+                    break;
+                }else{
+                    document.getElementById("fi_img").src = data.links[0].href;
+                }
+            }
+        }else{
+            document.getElementById("fi_img").src = data.links[0].href;
+        }
+    }
     if(data.data[0].media_type == "video"){
         console.log("video");
         document.getElementById("fi_img").classList.add("fi_img_video");
@@ -101,7 +117,7 @@ async function info_open(url, index){
     }
     document.getElementById("fi_description").innerHTML = data.data[0].description;
     document.getElementById("fi_sources").innerHTML = "";
-    datas = data.data[0];
+    datas = data.data[0]; //daten des items
     document.getElementById("fi_tab_center").innerHTML = datas.center;
     var keywords_string = "";
     if(datas.keywords){
