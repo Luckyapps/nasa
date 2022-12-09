@@ -108,7 +108,7 @@ async function info_open(url, index){
         document.getElementById("fi_img").addEventListener("click", ()=>{
             console.log("Lade Video");
             for(u=0;u<collection.length;u++){
-                if(collection[u].includes("preview.mp4")){
+                if(collection[u].includes(luckyapp_core.page_config.settings.preview_mp4)){
                     var vidsrc = collection[u];
                 }
             }
@@ -193,9 +193,13 @@ async function get_data(url){
 function container_clicked(e){
     if (document.getElementById("n_flyin_container").contains(e.target)){
         // Clicked in box
-      } else{
-        n_flyin_close();
-        // Clicked outside the box
+        console.log("clicked_inside");
+      }else{
+        if(document.getElementById("n_flyin_container").contains(e.target) != true && e.target.id != "fi_img"){
+            console.log("clicked_outside");
+            n_flyin_close();
+            // Clicked outside the box
+        }
       }
 }
 

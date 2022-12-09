@@ -27,6 +27,7 @@ function services_html_change(){
         +"<div>"
         +"<h2>Settings</h2>"
         +"<div>preview_img: <input id='n_s_pi' type='text' value='"+ luckyapp_core.page_config.settings.preview_img +"' onchange='settings_change(this)'></input></div>"
+        +"<div>preview_img: <input id='n_s_pv' type='text' value='"+ luckyapp_core.page_config.settings.preview_mp4 +"' onchange='settings_change(this)'></input></div>"
         +"</div>"
         +"</div>";
 }
@@ -41,11 +42,18 @@ function services_start(){
 }
 
 function settings_init(){
+    var settings_version = 1;
     if(localStorage.getItem("Nasa_settings")){
+        if(settings_version > JSON.parse(localStorage.getItem("Nasa_settings")).settings_version){
+            localStorage.removeItem("Nasa_settings");
+            settings_init();
+        }
         luckyapp_core.page_config.settings = JSON.parse(localStorage.getItem("Nasa_settings"));
     }else{
-        luckyapp_core.page_config.settings = {
-            preview_img:"thumb.jpg"
+        luckyapp_core.page_config.settings = { //standard settings
+            settings_version: settings_version,
+            preview_img:"thumb.jpg",
+            preview_mp4:"preview.mp4"
         }
         localStorage.setItem("Nasa_settings", JSON.stringify(luckyapp_core.page_config.settings));
     }
@@ -55,6 +63,8 @@ function settings_change(input){
     console.log(input.value);
     if(input.id == "n_s_pi"){
         luckyapp_core.page_config.settings.preview_img = input.value;
+    }else if(input.id == "n_s_pv"){
+        luckyapp_core.page_config.settings.preview_mp4 = input.value;
     }
     localStorage.setItem("Nasa_settings", JSON.stringify(luckyapp_core.page_config.settings));
 }
