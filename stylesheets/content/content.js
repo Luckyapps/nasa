@@ -5,6 +5,7 @@ async function start_content_stylesheet(){
     if((luckyapp_core.modules.preset.loaded && luckyapp_core.modules.header.loaded && luckyapp_core.modules.navbar.loaded) || luckyapp_core.modules.content.forceload){
         content_init = document.getElementById("content").outerHTML;
         document.getElementById("content").remove();
+        console.log(luckyapp_core.modules.preset.loaded);
         page.innerHTML += content_init;
         content = document.getElementById("content");
         content.style = "";

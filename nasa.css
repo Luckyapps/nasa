@@ -1,3 +1,17 @@
+#version_display{
+    position: fixed; 
+    background-color: gray;
+    padding: 5px; 
+    border-radius: 5px; 
+    color: black; 
+    bottom:10px; 
+    left:10px; 
+    z-index: 499;
+    cursor:pointer;
+}
+
+
+
 #n_flyin_background{
     position: fixed;
     top:0;

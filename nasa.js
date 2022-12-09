@@ -13,6 +13,7 @@ function nasa_init(){
     });
 
     document.getElementById("n_flyin_close").addEventListener("click", n_flyin_close);
+    document.getElementById("n_flyin_background").addEventListener('click', container_clicked);
 }
 
 async function nasa_start(subject){
@@ -171,6 +172,15 @@ async function get_data(url){
 
     .then((data_text) => {data = JSON.parse(data_text)});
     return data;
+}
+
+function container_clicked(e){
+    if (document.getElementById("n_flyin_container").contains(e.target)){
+        // Clicked in box
+      } else{
+        n_flyin_close();
+        // Clicked outside the box
+      }
 }
 
 function n_flyin_open(){

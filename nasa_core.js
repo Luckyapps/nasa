@@ -193,6 +193,7 @@ var luckyapp_core = {
             if(luckyapp_core.loaded){
             }else{
                 luckyapp_core.loaded = true;
+                scriptLoader_("services.js");
                 console.warn("Fertig geladen");
             }
         }
