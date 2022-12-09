@@ -7,7 +7,7 @@ var updatelist_luckyapp = {
             name:"",
             date: "xxx",
             type: "UPDATE",
-            description: "Einstellung für Bildgröße der Vorschau"
+            description: "Einstellung für Bildgröße der Vorschau |||||| Einstellung für Bildgröße der Vorschau und Bugfix"
         },{
             id: "dv.1.22123.0",
             title: "Nasa Update 3|Dez22",
