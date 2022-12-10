@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.22125.1",
+            title: "Nasa Update 5|Dez22",
+            name:"",
+            date: "xxx",
+            type: "UPDATE",
+            description: "info in error hinzugefügt, auch zu get_data funktion |||||||| design: handy zoomt nicht mehr das Bild in der Übersicht"
+        },{
             id: "dv.1.22124.1",
             title: "Nasa Update 4|Dez22",
             name:"",
