@@ -167,9 +167,12 @@ async function info_open(url, index){
         }
     }document.getElementById("fi_sources").innerHTML += links_unknown;
     n_flyin_open();
+    info_hide();
 }
 
 async function get_data(url){
+    info_hide();
+    info_show("Daten werden geladen...");
     //var url = "https://www.faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt";
     var data
 
@@ -187,6 +190,8 @@ async function get_data(url){
     .then((response) => response.text())
 
     .then((data_text) => {data = JSON.parse(data_text)});
+    info_hide();
+    info_show("Daten geladen", "success");
     return data;
 }
 

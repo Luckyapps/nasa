@@ -223,6 +223,18 @@
     #next_page_but{
         grid-column: unset !important;
     }
+    #nasa_output img{
+        transition:none;
+    }
+    #nasa_output img:hover{
+        position: unset;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 15px 0px #000000;
+        z-index: auto;
+    }
 }
 
 /* Safari 10.1+ */

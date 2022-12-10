@@ -19,6 +19,16 @@
     font-weight: bold;
 }
 
+.error_info{
+    border: 1px solid yellow !important;
+    background-color: #ffe60085 !important;
+}
+
+.error_success{
+    border: 1px solid green !important;
+    background-color: #007f0085 !important;
+}
+
 .error_hidden{
     display: none;
 }
