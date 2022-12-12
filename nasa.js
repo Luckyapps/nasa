@@ -92,14 +92,14 @@ async function info_open(url, index){
         if(luckyapp_core.page_config.settings){
             if(luckyapp_core.page_config.settings.preview_img){
                 if(collection[i].includes(luckyapp_core.page_config.settings.preview_img)){
-                    document.getElementById("fi_img").src = collection[i];
+                    document.getElementById("fi_img").src = http_fix(collection[i]);
                     break;
                 }else{
-                    document.getElementById("fi_img").src = data.links[0].href;
+                    document.getElementById("fi_img").src = http_fix(data.links[0].href);
                 }
             }
         }else{
-            document.getElementById("fi_img").src = data.links[0].href;
+            document.getElementById("fi_img").src = http_fix(data.links[0].href);
         }
     }
     if(data.data[0].media_type == "video"){
