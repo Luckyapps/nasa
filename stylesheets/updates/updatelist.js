@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.22125.2",
+            title: "Nasa Update 5|Dez22",
+            name:"",
+            date: "xxx",
+            type: "UPDATE",
+            description: ""
+        },{
             id: "dv.1.22125.1",
             title: "Nasa Update 5|Dez22",
             name:"",
