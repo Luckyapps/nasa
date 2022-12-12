@@ -260,6 +260,30 @@
     }
 }}
 
+/* Safari 10.1+ (alternate method) */
+
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+    #nasa_output img{ 
+        position:unset;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        border:3px solid gold;
+    }
+    #nasa_output img:hover{
+        position: unset;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 15px 0px #000000;
+        z-index: auto;
+    }
+}}
+
 /* Safari 11+ */
 
 @media not all and (min-resolution:.001dpcm)
