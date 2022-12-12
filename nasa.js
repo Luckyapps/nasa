@@ -227,7 +227,9 @@ function n_flyin_close(){
     n_flyin_background.classList = "n_flyin_close_back";
     n_flyin_container.classList = "n_flyin_close_cont";
     //var timeout_duration = parseFloat(window.getComputedStyle(n_flyin_background).animationDuration) * 1000;
+    n_flyin_background.style.overflow = "hidden";
     setTimeout(function() {
+        n_flyin_background.style.overflow = "";
       n_flyin_background.style.display = "none";
       document.body.style.overflow = "auto";
       document.getElementById("fi_img").outerHTML = "<img id='fi_img'></img>";

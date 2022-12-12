@@ -2,12 +2,12 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
-            id: "dv.1.22125.5",
+            id: "dv.1.22125.6",
             title: "Nasa Update 5|Dez22",
             name:"",
             date: "xxx",
             type: "UPDATE",
-            description: ""
+            description: "Safari http fix, nicht funktionierender Fix ||||||||||||  n_flyin container overflow/scrollbar fix"
         },{
             id: "dv.1.22125.1",
             title: "Nasa Update 5|Dez22",
