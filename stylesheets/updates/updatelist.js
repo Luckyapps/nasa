@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.22126.1",
+            title: "Nasa Update 6|Dez22",
+            name:"",
+            date: "22.12.2022",
+            type: "UPDATE",
+            description: "<ul><li>n_flyin scrollbar fix</li> <li>Neue Einstellung: ladeinfo ein/ausschalten</li></ul>"
+        },{
             id: "dv.1.22125.7",
             title: "Nasa Update 5|Dez22",
             name:"",

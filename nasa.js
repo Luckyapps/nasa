@@ -172,7 +172,9 @@ async function info_open(url, index){
 
 async function get_data(url){
     info_hide();
-    info_show("Daten werden geladen...");
+    if(luckyapp_core.page_config.settings.loading_info){
+        info_show("Daten werden geladen...");
+    }
     //var url = "https://www.faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt";
     var data
 
@@ -191,7 +193,9 @@ async function get_data(url){
 
     .then((data_text) => {data = JSON.parse(data_text)});
     info_hide();
-    info_show("Daten geladen", "success");
+    if(luckyapp_core.page_config.settings.loading_info){
+        info_show("Daten geladen", "success");
+    }
     return data;
 }
 
@@ -214,6 +218,7 @@ function n_flyin_open(){
     n_flyin_background.style.display = "flex";
     n_flyin_background.style.overflow = "unset";
     document.body.style.overflow = "hidden";
+    document.querySelector("html").style.overflowY = "hidden";
     n_flyin_background.classList = "n_flyin_open_back";
     n_flyin_container.classList = "n_flyin_open_cont";
     setTimeout(function() {
@@ -229,6 +234,7 @@ function n_flyin_close(){
     //var timeout_duration = parseFloat(window.getComputedStyle(n_flyin_background).animationDuration) * 1000;
     n_flyin_background.style.overflow = "hidden";
     setTimeout(function() {
+        document.querySelector("html").style.overflowY = "";
         n_flyin_background.style.overflow = "";
       n_flyin_background.style.display = "none";
       document.body.style.overflow = "auto";

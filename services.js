@@ -26,10 +26,17 @@ function services_html_change(){
         +"<div>Hier entsteht der Servicebereich.<div>"
         +"<div>"
         +"<h2>Settings</h2>"
-        +"<div>preview_img: <input id='n_s_pi' type='text' value='"+ luckyapp_core.page_config.settings.preview_img +"' onchange='settings_change(this)'></input></div>"
-        +"<div>preview_img: <input id='n_s_pv' type='text' value='"+ luckyapp_core.page_config.settings.preview_mp4 +"' onchange='settings_change(this)'></input></div>"
+        +"<div>preview_img: <input id='n_s_pi' list='p_i_l' type='text' value='"+ luckyapp_core.page_config.settings.preview_img +"' onchange='settings_change(this)'></input></div>"
+        +"<datalist id='p_i_l'><option value='thumb.jpg'><option value='large.jpg'><option value='small.jpg'><option value='orig.jpg'></datalist>"
+        +"<div>preview_mp4: <input id='n_s_pv' list='p_m_l' type='text' value='"+ luckyapp_core.page_config.settings.preview_mp4 +"' onchange='settings_change(this)'></input></div>"
+        +"<datalist id='p_m_l'><option value='preview.mp4'><option value='large.mp4'><option value='orig.mp4'></datalist>"
+        +"<div>loading_info: <input id='n_s_li' type='checkbox' onchange='settings_change(this)'></input></div>"
         +"</div>"
         +"</div>";
+}
+
+function services_html_script(){
+    document.getElementById("n_s_li").checked = luckyapp_core.page_config.settings.loading_info;
 }
 
 function services_start(){
@@ -38,11 +45,11 @@ function services_start(){
     console.log(luckyapp_core);
     var version_display = document.getElementById("version_display");
     version_display.innerHTML = "Version: "+ luckyapp_core.page_config.version;
-    version_display.addEventListener("click",()=>{services_html_change();flyin_open(services_html)})
+    version_display.addEventListener("click",async ()=>{services_html_change();await flyin_open(services_html);services_html_script()})
 }
 
 function settings_init(){
-    var settings_version = 1;
+    var settings_version = 2;
     if(localStorage.getItem("Nasa_settings")){
         if(settings_version > JSON.parse(localStorage.getItem("Nasa_settings")).settings_version){
             localStorage.removeItem("Nasa_settings");
@@ -53,18 +60,20 @@ function settings_init(){
         luckyapp_core.page_config.settings = { //standard settings
             settings_version: settings_version,
             preview_img:"thumb.jpg",
-            preview_mp4:"preview.mp4"
+            preview_mp4:"preview.mp4",
+            loading_info: true
         }
         localStorage.setItem("Nasa_settings", JSON.stringify(luckyapp_core.page_config.settings));
     }
 }
 
 function settings_change(input){
-    console.log(input.value);
     if(input.id == "n_s_pi"){
         luckyapp_core.page_config.settings.preview_img = input.value;
     }else if(input.id == "n_s_pv"){
         luckyapp_core.page_config.settings.preview_mp4 = input.value;
+    }else if(input.id == "n_s_li"){
+        luckyapp_core.page_config.settings.loading_info = input.checked;
     }
     localStorage.setItem("Nasa_settings", JSON.stringify(luckyapp_core.page_config.settings));
 }
