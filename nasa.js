@@ -152,6 +152,8 @@ async function info_open(url, index){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Klein JPG</a></li>";
         }else if(collection[u].includes("thumb.jpg")){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Thumb JPG</a></li>";
+        }else if(collection[u].includes("orig.tif")){
+            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Original TIFF</a></li>";
         }else if(collection[u].includes("large.mp4")){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Grosses Video [mp4]</a></li>";
         }else if(collection[u].includes("medium.mp4")){
@@ -162,7 +164,7 @@ async function info_open(url, index){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Originalvideo [mp4]</a></li>";
         }else if(collection[u].includes("preview.mp4")){
             document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Previewvideo [mp4]</a></li>";
-        }else {
+        }else{
             links_unknown += "<li><a href='"+ collection[u] +"'>"+ collection[u] +"</a></li>";
         }
     }document.getElementById("fi_sources").innerHTML += links_unknown;

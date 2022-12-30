@@ -10,7 +10,17 @@
     cursor:pointer;
 }
 
+#content{
+    overflow:visible;
+}
 
+html{
+    overflow-x: visible;
+}
+
+body{
+    overflow-x: visible;
+}
 
 #n_flyin_background{
     position: fixed;
