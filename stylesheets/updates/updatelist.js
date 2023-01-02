@@ -3,7 +3,7 @@ var updatelist_luckyapp = {
     "content": [ 
         {
             id: "dv.1.23011.1",
-            title: "Nasa Update 1|Jan21",
+            title: "Nasa Update 1|Jan23",
             name:"",
             date: "02.01.2023",
             type: "UPDATE",
