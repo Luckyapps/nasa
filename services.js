@@ -90,9 +90,13 @@ function settings_change(input){
     info_show("Einstellungen gespeichert.","success");
 }
 
-function settings_reset(){
+async function settings_reset(){
     if(localStorage.getItem("Nasa_settings")){
         localStorage.removeItem("Nasa_settings");
     }
     settings_init();
+    flyin_close();
+    setTimeout(()=>{
+        document.getElementById("version_display").click();
+    },parseFloat(window.getComputedStyle(version_history_container).animationDuration) * 1000 + 10);
 }

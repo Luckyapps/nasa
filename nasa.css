@@ -38,6 +38,10 @@ body{
     overflow-x: visible;
 }
 
+button{
+    cursor: pointer;
+}
+
 #n_flyin_background{
     position: fixed;
     top:0;

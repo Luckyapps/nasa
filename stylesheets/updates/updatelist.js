@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23012.1",
+            title: "Nasa Update 2|Jan23",
+            name:"",
+            date: "xxx",
+            type: "UPDATE",
+            description: "Buttoncursor |||||||| settings reset fix"
+        },{
             id: "dv.1.23011.1",
             title: "Nasa Update 1|Jan23",
             name:"",
