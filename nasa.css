@@ -8,6 +8,22 @@
     left:10px; 
     z-index: 499;
     cursor:pointer;
+    transition: font-size 0.3s ease-out;
+}
+
+#version_display:active:hover {
+    font-size: 80%;
+}
+
+.services_content > div{
+    background-color: #121212;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 0 10px 0;
+}
+
+#services_settings_container > div{
+    margin: 10px 0 10px 0;
 }
 
 #content{

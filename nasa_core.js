@@ -119,7 +119,7 @@ var luckyapp_core = {
                 luckyapp: {}
             },
             info_window_text: "Es wurden einige Änderungen vorgenommen:",
-            info_window_signature: '<hr style="border:1px solid black; width:15%">Wenn Sie einen Fehler/Bug gefunden haben, schreiben Sie uns gerne unter <a href="mailto:thebuissnescreeper@gmail.com">thebuissnescreeper@gmail.com</a>',
+            info_window_signature: '<hr style="border:1px solid white; width:15%">Wenn Sie einen Fehler/Bug gefunden haben, schreiben Sie uns gerne unter <a href="mailto:thebuissnescreeper@gmail.com">thebuissnescreeper@gmail.com</a>',
             trigger: false,
             files: {
                 js_main: "stylesheets/updates/updates.js",

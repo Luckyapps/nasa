@@ -26,6 +26,7 @@ async function start_updates_stylesheet(){
 }
 
 function load_updatelist(list, source, return_required){
+    console.log("UPDATE");
     if(source == "Luckyapp"){
         updatelist = document.getElementById("updatelist");
         for(i=0; i< list.length; i++){
@@ -113,20 +114,20 @@ function load_version_history_updatelist(){
 }
 
 function load_updatebanner(list){
-    if(localStorage.getItem("updates_index")){
-        if(localStorage.getItem("updates_index") < list.length || luckyapp_core.modules.updates.trigger == true){
+    if(localStorage.getItem("n_updates_index")){
+        if(localStorage.getItem("n_updates_index") < list.length || luckyapp_core.modules.updates.trigger == true){
             console.log("banner go");
             updatebanner_container.style.display = "flex";
             updatebanner.getElementsByTagName("h2")[0].innerHTML = list[0].title;
             updatebanner.getElementsByTagName("div")[0].innerHTML = list[0].description;
         }
     }else{
-        localStorage.setItem("updates_index", list.length);
+        localStorage.setItem("n_updates_index", list.length);
         load_updatebanner(list);
     }
 }
 
 function close_updatebanner(){
-    localStorage.setItem("updates_index", luckyapp_core.modules.updates.updatelists.luckyapp.list.content.length);
+    localStorage.setItem("n_updates_index", luckyapp_core.modules.updates.updatelists.luckyapp.list.content.length);
     updatebanner_container.style.display = "none";
 }
