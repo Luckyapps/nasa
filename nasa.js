@@ -214,7 +214,19 @@ function container_clicked(e){
       }
 }
 
+window.addEventListener('popstate', (event) => {
+    console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
+    if(n_flyin_state == "open"){
+        n_flyin_close();
+        window.history.forward(1);
+    }
+});
+
+var n_flyin_state
+
 function n_flyin_open(){
+    history.pushState({ page: 1 }, "title 1", "?state=flyin");
+    n_flyin_state = "open";
     var n_flyin_background = document.getElementById("n_flyin_background");
     var n_flyin_container = document.getElementById("n_flyin_container");
     n_flyin_background.style.display = "flex";
@@ -229,6 +241,8 @@ function n_flyin_open(){
 }
 
 function n_flyin_close(){
+    history.back();
+    n_flyin_state = "close";
     var n_flyin_background = document.getElementById("n_flyin_background");
     var n_flyin_container = document.getElementById("n_flyin_container");
     n_flyin_background.classList = "n_flyin_close_back";

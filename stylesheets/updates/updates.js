@@ -97,9 +97,23 @@ function updates_info_open(src, list_name){
     }
     var flyin_content = "";
     flyin_content += "<h1 id='updates_info_header'>"+ list[i].title +" : "+ list[i].name +"</h1><hr>"
-                        +"<div class='update_ flyin_content'><p id='updates_info_content' >"+ luckyapp_core.modules.updates.info_window_text +""+ list[i].description +""+ luckyapp_core.modules.updates.info_window_signature +"</p></div>";
+                        +"<div class='update_ flyin_content'><p id='updates_info_content' >"+ text_encode(luckyapp_core.modules.updates.info_window_text) +""+ text_encode(list[i].description) +""+ luckyapp_core.modules.updates.info_window_signature +"</p></div>";
     flyin_content = "<div id='updates_info_container'>"+ flyin_content +"<br></div>";
     flyin_open(flyin_content);
+}
+
+function text_encode(text){
+    console.log(text);
+    text = text
+    .replace("Ä", "&#196;")
+    .replace("ä", "&#228;")
+    .replace("Ö", "&#214;")
+    .replace("ö", "&#246;")
+    .replace("Ü", "&#220;")
+    .replace("\u00fc", "&#252;")
+    .replace("ß", "&#223;");
+    console.log(text);
+    return text    
 }
 
 function load_version_history_updatelist(){

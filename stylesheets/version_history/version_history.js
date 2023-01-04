@@ -53,6 +53,14 @@ function window_clicked(e){
     }
 }
 
+window.addEventListener('popstate', (event) => {
+  console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
+  if(flyin_state == "open"){
+      flyin_close();
+      window.history.forward(1);
+  }
+});
+
 function flyin_open(content, type){ //Öffnen eines Flyin-Fensters: flyin_open([content]) --> [content] muss html als String sein
   flyin = true;
   if(version_history_container.classList.contains("version_history_opened")){//Experimentell: Wenn schon geöffnet
@@ -70,6 +78,8 @@ function flyin_open(content, type){ //Öffnen eines Flyin-Fensters: flyin_open([
       version_history_close_button.addEventListener("click", version_history_close); //Experimentell: muss neu definiert werden
       //version_history_info_button.addEventListener("click", version_history_info_open); //Experimentell: muss neu definiert werden
     }
+    history.pushState({ page: 1 }, "title 1", "?state=flyin");
+    flyin_state = "open";
     version_history_grid_container.style.display = "grid";
     version_history_grid_container.classList = "version_history_grid_container_open";
     body.style.overflow = "hidden";
@@ -85,6 +95,8 @@ function flyin_open(content, type){ //Öffnen eines Flyin-Fensters: flyin_open([
 }
 
 function flyin_close(origin, content, type, reason){
+  history.back();
+  flyin_state = "close";
   body.style.overflow = "unset";
   version_history_grid_container.style.overflow = "hidden";
   version_history_grid_container.classList = "version_history_grid_container_close";

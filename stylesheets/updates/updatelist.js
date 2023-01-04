@@ -5,9 +5,9 @@ var updatelist_luckyapp = {
             id: "dv.1.23012.2",
             title: "Nasa Update 2|Jan23",
             name:"",
-            date: "xxx",
+            date: "04.01.2023",
             type: "UPDATE",
-            description: "Buttoncursor |||||||| settings reset fix"
+            description: "<ul><li>Neue Möglichkeit zum Schließen des Flyins: <ul><li>Wird der Zurückbutton gedrückt, schließt sich das Flyin.</li></ul></li><li>Designanpassungen: <ul><li>Der Cursor bei allen Buttons ist jetzt ein Pointer.</li></ul></li><li>Bugfixes: <ul><li>Ein Fehler mit dem Zurücksetzen der Einstellungen behoben</li></ul></li></ul>"
         },{
             id: "dv.1.23011.1",
             title: "Nasa Update 1|Jan23",
