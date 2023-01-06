@@ -132,12 +132,3 @@ async function app_reset(){
         localStorage.removeItem("cookies");
         location.reload(true);
 }
-
-async function get_cache_size(obj){
-    var size = await caches.open("dynamic-v1") .then(function (cache) { cache.keys().then(function (keys) { cachedItemCount = keys.length; }); });
-    console.log(size);
-    if(obj){
-        obj.innerHTML = size;
-    }
-    return size;
-}
