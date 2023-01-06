@@ -121,7 +121,7 @@ async function settings_reset(){
 }
 
 async function cache_reset(){
-    caches.remove(CACHE_DYNAMIC_NAME);
+    caches.remove("dynamic-v1");
     info_show("Cache geleert.");
 }
 
@@ -133,6 +133,6 @@ async function app_reset(){
         location.reload(true);
 }
 
-function get_cache_size(){
-    return caches.open(CACHE_DYNAMIC_NAME) .then(function (cache) { cache.keys().then(function (keys) { cachedItemCount = keys.length; }); });
+async function get_cache_size(){
+    return await caches.open("dynamic-v1") .then(function (cache) { cache.keys().then(function (keys) { cachedItemCount = keys.length; }); });
 }
