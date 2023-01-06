@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23013.1",
+            title: "Nasa Update 3|Jan23",
+            name:"Zurücksetzen Update",
+            date: "06.01.2023",
+            type: "UPDATE",
+            description: "<ul><li>Neue Optionen zum Zurücksetzen: <ul><li>Ein neuer Abschnitt im Servicebereich wurde erstellt.</li><li>Es gibt nun drei neue Möglichkeiten Dinge zurückzusetzen: <ul><li>Einstellungen zurücksetzen</li><li>Gesammte Appdaten zurücksetzen</li><li>Appcache leeren</li></ul></li></ul></li></ul>"
+        },{
             id: "dv.1.23012.2",
             title: "Nasa Update 2|Jan23",
             name:"",
