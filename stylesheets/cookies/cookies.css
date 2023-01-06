@@ -1,0 +1,88 @@
+#cookie_container{
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    overflow: auto;
+    align-items: start;
+    background-color: #000000b3;
+    z-index: 999;
+}
+
+#cookie_content{
+    display: grid;
+    text-align: center;
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    background-color: /*#868686f2*/#ffffffa8;
+    border: 2px solid #595959;
+    border-radius: 1em;
+    width: fit-content;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    grid-row-gap: 1em;
+    position: relative;
+    z-index: 930;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    top: 50px;
+}
+
+#cookie_content:hover{
+    cursor:pointer;
+}
+
+#cookie_content div{
+    margin-top:0;
+}
+
+.cookie_container_open{
+    display: grid;
+}
+
+.cookie_container_hide{
+    display: none;
+    top:100%;
+}
+
+.cookie_container_close{
+    opacity: 0;
+    animation-name: cookie_container_close_ani;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    background-color: transparent;
+}
+
+@keyframes cookie_container_close_ani{
+    0%{opacity: 1;top:50px; background-color:#000000b3}
+    5%{background-color:transparent}
+    50%{opacity:0;}
+    100%{opacity:0;top:100%}
+}
+
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    #cookie_content{
+        background-color: /*#86868642*/#ffffffa8;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    #cookie_container{
+        background-color: #000000b3;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+  }
+
+#cookies_close{
+    padding:1em;
+    background-color:#6c6c6c;
+    border:1px solid gray;
+    border-radius:1em;
+}
+
+#cookies_close:hover{
+    cursor:pointer;
+    background-color:lightgray;
+}

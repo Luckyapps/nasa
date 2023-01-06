@@ -177,6 +177,18 @@ var luckyapp_core = {
                 await start_error_stylesheet();
                 luckyapp_core.load_check();
             }
+        },
+        cookies: {
+            active: true,
+            files: {
+                js_main: "stylesheets/cookies/cookies.js",
+                css: ["stylesheets/cookies/cookies.css"]
+            },
+            text:"Bei Nutzung der Website stimmen Sie zu, dass die Website notwendige technische Nutzerdaten (z.B. Darkmode-Einstellungen, Cookieauswahl, Favoriten, Einstellungen) lokal im Browser speichert.",
+            start: async ()=>{
+                await init_cookies_stylesheet();
+                luckyapp_core.load_check();
+            }
         }
     },
     page_config: page_config_init,

@@ -31,7 +31,18 @@ function services_html_change(){
             +"<div>preview_mp4: <input id='n_s_pv' list='p_m_l' type='text' value='"+ luckyapp_core.page_config.settings.preview_mp4 +"' onchange='settings_change(this)'></input></div>"
             +"<datalist id='p_m_l'><option value='preview.mp4'><option value='large.mp4'><option value='orig.mp4'></datalist>"
             +"<div>loading_info: <input id='n_s_li' type='checkbox' onchange='settings_change(this)'></input></div>"
-            +"<button onclick='settings_reset()'>Auf Standard zurücksetzen</button>"
+        +"</div>"
+        +"<div>"
+            +"<h2>Zurücksetzen</h2>"
+            +"<h3>Einstellungen zurücksetzen</h3>"
+                +"<p>Damit werden die Einstellungen auf die Standartwerte zurückgesetzt.</p>"
+                +"<button onclick='settings_reset()'>Einstellungen zurücksetzen</button>"
+            +"<h3>Gesammte App zurücksetzen</h3>"
+                +"<p>Dabei werden alle Daten zurückgesetzt. Dazu zählen z.B.Favoriten und Einstellungen. Auch alle Cookies oder localStorage daten werden zurückgesetzt.</p>"
+                +"<button onclick='app_reset()'>Unwiederruflich Zurücksetzen</button>"
+            +"<h3>Cache leeren</h3>"
+                +"<p>Wird ein hoher Speicherplatzverbrauch bemerkt, kann es sich lohnen den cache manuell zu leeren. Aktueller Verbrauch:<span onload='get_cache_size(this)'></span></p>"
+                +"<button onclick='cache_reset()'>Cache Leeren</button>"
         +"</div>"
         +"<div>"
             +"<h2>Updates</h2>"
@@ -107,4 +118,21 @@ async function settings_reset(){
     setTimeout(()=>{
         document.getElementById("version_display").click();
     },parseFloat(window.getComputedStyle(version_history_container).animationDuration) * 1000 + 10);
+}
+
+async function cache_reset(){
+    caches.remove(CACHE_DYNAMIC_NAME);
+    info_show("Cache geleert.");
+}
+
+async function app_reset(){
+        //localStorage.clear();
+        localStorage.removeItem("Nasa_settings");
+        localStorage.removeItem("n_updates_index");
+        localStorage.removeItem("cookies");
+        location.reload(true);
+}
+
+function get_cache_size(){
+    return caches.open(CACHE_DYNAMIC_NAME) .then(function (cache) { cache.keys().then(function (keys) { cachedItemCount = keys.length; }); });
 }
