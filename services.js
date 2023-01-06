@@ -121,7 +121,7 @@ async function settings_reset(){
 }
 
 async function cache_reset(){
-    caches.remove("dynamic-v1");
+    caches.delete("dynamic-v1");
     info_show("Cache geleert.");
 }
 
@@ -133,6 +133,11 @@ async function app_reset(){
         location.reload(true);
 }
 
-async function get_cache_size(){
-    return await caches.open("dynamic-v1") .then(function (cache) { cache.keys().then(function (keys) { cachedItemCount = keys.length; }); });
+async function get_cache_size(obj){
+    var size = await caches.open("dynamic-v1") .then(function (cache) { cache.keys().then(function (keys) { cachedItemCount = keys.length; }); });
+    console.log(size);
+    if(obj){
+        obj.innerHTML = size;
+    }
+    return size;
 }
