@@ -35,8 +35,16 @@ function services_html_change(){
         +"</div>"
         +"<div>"
             +"<h2>Updates</h2>"
-            +"<div>Zu einigen Updates sind keine genauen Angaben verfügbar.</div>"
+            +"<div>Zu einigen Updates sind keine genauen Angaben verf&uuml;gbar.</div>"
             +"<ul id='updatelist'></ul>"
+        +"</div>"
+        +"<div>"
+            +"<h2>Zuk&uuml;nftige 	&Auml;nderungen:</h2>"
+            +"<p>Diese Funktionen und 	&auml;nderungen werden in k&uuml;nftigen Versionen hinzugef&uuml;gt:</p>"
+            +"<ul>"
+                +"<li>Favoriten</li>"
+                +"<li>Suchfilter</li>"
+            +"</ul>"
         +"</div>"
         +"</div>";
 }
