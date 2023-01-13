@@ -24,13 +24,6 @@ async function start_content_stylesheet(){
             await sleep(1);
             //start_content_stylesheet();
             if(i==100){
-                var evt = {
-                    message: "CONTENT ERROR",
-                    error:{
-                        message:"CONTENT ERROR",
-                        stack: ""
-                    }
-                };
                 luckyapp_core.load_error(undefined, "CONTENT ERROR");
             }
         }
