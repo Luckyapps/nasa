@@ -41,7 +41,7 @@ function services_html_change(){
                 +"<p>Dabei werden alle Daten zurückgesetzt. Dazu zählen z.B.Favoriten und Einstellungen. Auch alle Cookies oder localStorage daten werden zurückgesetzt.</p>"
                 +"<button onclick='app_reset()'>Unwiederruflich Zurücksetzen</button>"
             +"<h3>Cache leeren</h3>"
-                +"<p>Wird ein hoher Speicherplatzverbrauch bemerkt, kann es sich lohnen den cache manuell zu leeren. Aktueller Verbrauch:<span onload='get_cache_size(this)'></span></p>"
+                +"<p>Wird ein hoher Speicherplatzverbrauch bemerkt, kann es sich lohnen den cache manuell zu leeren. Aktueller Verbrauch: <span class='show_cache_size'></span></p>"
                 +"<button onclick='cache_reset()'>Cache Leeren</button>"
         +"</div>"
         +"<div>"
@@ -61,6 +61,7 @@ function services_html_change(){
 }
 
 function services_html_script(){
+    show_cache_size(document.getElementsByClassName("show_cache_size")[0]);
     document.getElementById("n_s_li").checked = luckyapp_core.page_config.settings.loading_info;
 }
 
@@ -132,3 +133,84 @@ async function app_reset(){
         localStorage.removeItem("cookies");
         location.reload(true);
 }
+
+var test, entries = [], cacheSize = 0, notCounted = [], cache_calc_state;
+
+async function show_cache_size(elem){
+    var cache = await get_cache_size(true);
+    elem.innerHTML = cache.size;
+}
+
+async function get_cache_size(extended){
+    entries = [];
+    cacheSize = 0;
+    notCounted = [];
+    cache_calc_state;
+    cache_calc_state = false;
+    queryCache();
+    var loop_break = false;
+    for(h=0;loop_break == false;h++){
+        if(cache_calc_state == true){
+            loop_break = true;
+            if(extended){
+                return {
+                    size: byteConverter(cacheSize),
+                    notIncluded: notCounted.length,
+                    notIncludedFiles: notCounted
+                };
+            }else{
+                return byteConverter(cacheSize);
+            }
+        }else{
+            await sleep(100);
+        }
+    }
+    
+}
+
+function queryCache(){
+    var url = [];
+    caches.open('dynamic-v1').then(function (cache){
+        cache.keys().then(function(keys){
+            return Promise.all(
+                    keys.map(function(k){url.push(k.url); return k.url} )
+                )
+        }).then(function(u){ cacheList(url);})
+    })
+}
+
+async function cacheList(Items)
+{    for(var i = 0; i < Items.length; i++){
+        await fetching(Items[i]);
+    }
+    cache_calc_state = true;
+}
+
+async function fetching(url){
+    await fetch(url)
+    .then((response) => {
+        if(response.headers.get("content-length") != null){
+            cacheSize += parseInt(response.headers.get("content-length"));
+        }else{
+            notCounted.push(url);
+        }
+    })
+    .catch(function(error) {
+        console.error("Fetch error");
+    });;
+}
+
+function byteConverter(B){
+    var KB = B / 1024;
+    var MB = KB / 1024;
+    if(MB < 1){
+        return extround(KB, 100) +" KB";
+    }else{
+        return extround(MB, 100) +" MB";
+    }
+}
+
+function extround(zahl,n_stelle) {
+    zahl = (Math.round(zahl * n_stelle) / n_stelle);
+        return zahl;
+    }
