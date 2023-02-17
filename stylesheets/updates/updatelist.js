@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23013.2",
+            title: "Nasa Update 3|Jan23",
+            name:"",
+            date: "17.02.2023",
+            type: "BUGFIX",
+            description: "<ul><li>Bugfixes und Optimierungen</li></ul>"
+        },{
             id: "dv.1.23013.1",
             title: "Nasa Update 3|Jan23",
             name:"Zurücksetzen Update",
