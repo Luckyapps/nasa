@@ -8,7 +8,7 @@ async function start_content_stylesheet(){
             ready_to_load = true;
             content_init = document.getElementById("content").outerHTML;
             document.getElementById("content").remove();
-            console.log(luckyapp_core.modules.preset.loaded);
+            //console.log(luckyapp_core.modules.preset.loaded);
             page.innerHTML += content_init;
             content = document.getElementById("content");
             content.style = "";

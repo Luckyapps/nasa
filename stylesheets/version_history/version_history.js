@@ -1,4 +1,4 @@
-var watermark,body, version_history_container,version_history_grid_container, version_history_close_button, version_history_info_button, version_history_innerHTML, flyin, version_history_info_content;
+var watermark, flyin_state, body, version_history_container,version_history_grid_container, version_history_close_button, version_history_info_button, version_history_innerHTML, flyin, version_history_info_content;
 
 async function load_version_history_stylesheet(){
   if(luckyapp_core.modules.updates.loaded){
@@ -54,7 +54,7 @@ function window_clicked(e){
 }
 
 window.addEventListener('popstate', (event) => {
-  console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
+  //console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
   if(flyin_state == "open"){
       flyin_close();
       window.history.forward(1);
@@ -78,7 +78,7 @@ function flyin_open(content, type){ //Öffnen eines Flyin-Fensters: flyin_open([
       version_history_close_button.addEventListener("click", version_history_close); //Experimentell: muss neu definiert werden
       //version_history_info_button.addEventListener("click", version_history_info_open); //Experimentell: muss neu definiert werden
     }
-    history.pushState({ page: 1 }, "title 1", "?state=flyin");
+    history.pushState({ page: 1 }, "title 1", "?flyin");
     flyin_state = "open";
     version_history_grid_container.style.display = "grid";
     version_history_grid_container.classList = "version_history_grid_container_open";

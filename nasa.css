@@ -42,6 +42,30 @@ button{
     cursor: pointer;
 }
 
+#header{
+    display:flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+#title{
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column; 
+    align-items: center; 
+    border-bottom: 1px solid white; 
+    margin-bottom:20px
+}
+
+#input_form{
+    border-bottom: 1px solid white; 
+    padding-bottom:20px; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+}
+
 #n_flyin_background{
     position: fixed;
     top:0;

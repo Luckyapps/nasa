@@ -68,7 +68,7 @@ function services_html_script(){
 function services_start(){
     var s_updatelist = luckyapp_core.modules.updates.updatelists.luckyapp.list.content;
     luckyapp_core.page_config.version = s_updatelist[0].id;
-    console.log(luckyapp_core);
+    //console.log(luckyapp_core);
     var version_display = document.getElementById("version_display");
     version_display.innerHTML = "Version: "+ luckyapp_core.page_config.version;
     version_display.addEventListener("click",async ()=>{
@@ -187,7 +187,7 @@ async function cacheList(Items)
 }
 
 async function fetching(url){
-    await fetch(url)
+    await fetch(url, {cache: "force-cache"})
     .then((response) => {
         if(response.headers.get("content-length") != null){
             cacheSize += parseInt(response.headers.get("content-length"));

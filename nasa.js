@@ -183,10 +183,10 @@ async function get_data(url){
     if(!url.includes("https")){
         if(url.includes("http")){
             url = url.replace("http","https");
-            console.log(url);
+            //console.log(url);
         }
     }else{
-        console.log(url);
+        //console.log(url);
     }
     
     await fetch(url)
@@ -215,7 +215,7 @@ function container_clicked(e){
 }
 
 window.addEventListener('popstate', (event) => {
-    console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
+    //console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
     if(n_flyin_state == "open"){
         n_flyin_close();
         window.history.forward(1);
@@ -225,7 +225,12 @@ window.addEventListener('popstate', (event) => {
 var n_flyin_state
 
 function n_flyin_open(){
-    history.pushState({ page: 1 }, "title 1", "?state=flyin");
+    if(location.search == ""){
+        var url = "?flyin";
+    }else{
+        var url = location.search +"&flyin";
+    }
+    history.pushState({ page: 1 }, "flyin", url);
     n_flyin_state = "open";
     var n_flyin_background = document.getElementById("n_flyin_background");
     var n_flyin_container = document.getElementById("n_flyin_container");

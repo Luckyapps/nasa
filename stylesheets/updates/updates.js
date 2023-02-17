@@ -26,7 +26,7 @@ async function start_updates_stylesheet(){
 }
 
 function load_updatelist(list, source, return_required){
-    console.log("UPDATE");
+    //console.log("UPDATE");
     if(source == "Luckyapp"){
         updatelist = document.getElementById("updatelist");
         for(i=0; i< list.length; i++){
@@ -103,7 +103,7 @@ function updates_info_open(src, list_name){
 }
 
 function text_encode(text){
-    console.log(text);
+    //console.log(text);
     text = text
     .replace("Ä", "&#196;")
     .replace("ä", "&#228;")
@@ -112,7 +112,7 @@ function text_encode(text){
     .replace("Ü", "&#220;")
     .replace("\u00fc", "&#252;")
     .replace("ß", "&#223;");
-    console.log(text);
+    //console.log(text);
     return text    
 }
 
