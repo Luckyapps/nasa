@@ -30,6 +30,8 @@ async function nasa_start(subject){
                     output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' src='"+ data.items[i].links[j].href +"'></img>";
                 }
             }
+        }else if(data.items[i].data[0].media_type == "audio"){
+            output.innerHTML += "<div class='audio_card' onclick='info_open(`"+ data.href +"`, `"+ i +"`)'>"+ data.items[i].data[0].title +"</div>";
         }
     }
     if(data.links){
@@ -61,6 +63,8 @@ async function next_page(source){
                     output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' src='"+ data.items[i].links[j].href +"'></img>";
                 }
             }
+        }else if(data.items[i].data[0].media_type == "audio"){
+            output.innerHTML += "<div class='audio_card' onclick='info_open(`"+ data.href +"`, `"+ i +"`)'>"+ data.items[i].data[0].title +"</div>";
         }else{
             output.innerHTML += "<img onclick='info_open(`"+ data.href +"`, `"+ i +"`)' alt='NOPREVIEW'></img>";
         }
@@ -91,11 +95,24 @@ async function info_open(url, index){
     for(i=0;i<collection.length;i++){
         if(luckyapp_core.page_config.settings){
             if(luckyapp_core.page_config.settings.preview_img){
-                if(collection[i].includes(luckyapp_core.page_config.settings.preview_img)){
-                    document.getElementById("fi_img").src = http_fix(collection[i]);
-                    break;
-                }else{
-                    document.getElementById("fi_img").src = http_fix(data.links[0].href);
+                try{ //Wenn media_type != audio
+                    if(collection[i].includes(luckyapp_core.page_config.settings.preview_img)){
+                        document.getElementById("fi_img").src = http_fix(collection[i]);
+                        break;
+                    }else{
+                        document.getElementById("fi_img").src = http_fix(data.links[0].href);
+                    }
+                    document.getElementById("fi_audio").style.display = "none";
+                }
+                catch{ //Wenn media_type = audio
+                    //document.getElementById("fi_img").src = "images/earth.jpg";
+                    document.getElementById("fi_img").onclick = ()=>{
+                        initAudio(data.data[0], collection);
+                    }
+                    document.getElementById("fi_audio").style.display = "block";
+                    document.getElementById("fi_audio").onclick = ()=>{
+                        initAudio(data.data[0], collection);
+                    }
                 }
             }
         }else{
@@ -271,5 +288,34 @@ function http_fix(url){
         }
     }else{
         return url;
+    }
+}
+
+audioPlaying = false;
+var audio, af = 0;
+
+function initAudio(data, collection){
+    af++;
+    var mediaPlayer = document.getElementById("mediaPlayer");
+    var audioTitle = document.getElementById("audioTitle");
+    var audioPlaybutton = document.getElementById("audioPlaybutton");
+    audioTitle.innerHTML = data.title;
+    audioPlaybutton.innerHTML = ">";
+    mediaPlayer.style.display = "flex";
+    audio = new Audio(collection[0]);
+    audioPlaying = false;
+    let handler = ()=>{
+        if(audioPlaying){
+            audio.pause();
+            audioPlaying = false;
+            audioPlaybutton.innerHTML = ">";
+        }else if(!audioPlaying){
+            audio.play();
+            audioPlaying = true;
+            audioPlaybutton.innerHTML = "||";
+        }
+    };
+    if(af<2){
+        audioPlaybutton.addEventListener("click",handler);
     }
 }

@@ -53,8 +53,12 @@ function services_html_change(){
             +"<h2>Zuk&uuml;nftige 	&Auml;nderungen:</h2>"
             +"<p>Diese Funktionen und 	&auml;nderungen werden in k&uuml;nftigen Versionen hinzugef&uuml;gt:</p>"
             +"<ul>"
+                +"<li><b>Audioquellen Support</b> (bereits in Arbeit)</li>"
                 +"<li>Favoriten</li>"
                 +"<li>Suchfilter</li>"
+                +"<li>Ergebnislinks Sortieren (Überschriften)"
+                +"<li>Audio Support</li>"
+                +"<li>IOS bugfixes</li>"
             +"</ul>"
         +"</div>"
         +"</div>";
