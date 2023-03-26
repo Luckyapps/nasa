@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23031.1",
+            title: "Nasa Update 1|Mär23",
+            name:"",
+            date: "26.03.2023",
+            type: "UPDATE",
+            description: "<ul><li>Erster Support von Audioinhalten <ul><li>Es werden nun auch Audioinhalte angezeigt. Über den neuen Mediaplayer können sie abgespielt werden.</li></ul></li></ul>"
+        },{
             id: "dv.1.23013.2",
             title: "Nasa Update 3|Jan23",
             name:"",
