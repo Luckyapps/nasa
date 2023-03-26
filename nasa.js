@@ -103,16 +103,17 @@ async function info_open(url, index){
                         document.getElementById("fi_img").src = http_fix(data.links[0].href);
                     }
                     document.getElementById("fi_audio").style.display = "none";
+                    document.getElementById("fi_audio_album").style.display = "none";
                 }
                 catch{ //Wenn media_type = audio
                     //document.getElementById("fi_img").src = "images/earth.jpg";
-                    document.getElementById("fi_img").onclick = ()=>{
+                    /*document.getElementById("fi_img").onclick = ()=>{
                         initAudio(data.data[0], collection);
                     }
                     document.getElementById("fi_audio").style.display = "block";
                     document.getElementById("fi_audio").onclick = ()=>{
                         initAudio(data.data[0], collection);
-                    }
+                    }*/
                 }
             }
         }else{
@@ -120,7 +121,7 @@ async function info_open(url, index){
         }
     }
     if(data.data[0].media_type == "video"){
-        console.log("video");
+        document.getElementById("fi_description").innerHTML = data.data[0].description;
         document.getElementById("fi_img").classList.add("fi_img_video");
         document.getElementById("fi_img").addEventListener("click", ()=>{
             console.log("Lade Video");
@@ -131,8 +132,19 @@ async function info_open(url, index){
             }
             document.getElementById("fi_img").outerHTML = "<video class='fi_video' id='fi_img' controls src='"+ http_fix(vidsrc) +"'>";
         });
+    }else if(data.data[0].media_type == "audio"){
+        document.getElementById("fi_description").innerHTML = data.data[0].description_508;
+        if(data.data[0].album){
+            document.getElementById("fi_audio_album").style.display = "block";
+            document.getElementById("fi_audio_album").innerHTML = data.data[0].album[0];
+        }
+        document.getElementById("fi_audio").style.display = "block";
+        document.getElementById("fi_audio").onclick = ()=>{
+            initAudio(data.data[0], collection);
+            }
+    }else{
+        document.getElementById("fi_description").innerHTML = data.data[0].description;
     }
-    document.getElementById("fi_description").innerHTML = data.data[0].description;
     document.getElementById("fi_sources").innerHTML = "";
     datas = data.data[0]; //daten des items
     document.getElementById("fi_tab_center").innerHTML = datas.center;
