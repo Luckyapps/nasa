@@ -391,6 +391,24 @@ button{
         box-shadow: 0px 0px 15px 0px #000000;
         z-index: auto;
     }
+    .audio_card{
+        position:unset;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        border:3px solid gold;
+    }
+    .audio_card:hover{
+        position: unset;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 15px 0px #000000;
+        z-index: auto;
+    }
 }}
 
 /* Safari 10.1+ (alternate method) */
@@ -407,6 +425,24 @@ button{
         border:3px solid gold;
     }
     #nasa_output img:hover{
+        position: unset;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 15px 0px #000000;
+        z-index: auto;
+    }
+    .audio_card{
+        position:unset;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        border:3px solid gold;
+    }
+    .audio_card:hover{
         position: unset;
         top: auto;
         left: auto;
@@ -432,6 +468,24 @@ button{
         border:3px solid gold;
     }
     #nasa_output img:hover{
+        position: unset;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 15px 0px #000000;
+        z-index: auto;
+    }
+    .audio_card{
+        position:unset;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        border:3px solid gold;
+    }
+    .audio_card:hover{
         position: unset;
         top: auto;
         left: auto;
