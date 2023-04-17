@@ -166,7 +166,12 @@ async function info_open(url, index){
     document.getElementById("fi_tab_center").innerHTML = datas.center;
     document.getElementById("fi_tab_date_created").innerHTML = datas.date_created;
     document.getElementById("fi_tab_secondary_creator").innerHTML = datas.secondary_creator;
-    document.getElementById("fi_tab_other").innerHTML = JSON.stringify(datas);
+
+    if(luckyapp_core.page_config.settings.showData){
+        document.getElementById("fi_tab_other").innerHTML = JSON.stringify(datas);
+    }else{
+        document.getElementById("fi_tab_other").innerHTML = "Datenanzeige in den Einstellungen Deaktiviert.";
+    }
     var links_unknown = "";
     for(u=0;u<collection.length;u++){
         if(collection[u].includes("metadata.json")){
@@ -314,7 +319,7 @@ function initAudio(data, collection){
     audioTitle.innerHTML = data.title;
     audioPlaybutton.innerHTML = ">";
     mediaPlayer.style.display = "flex";
-    audio = new Audio(collection[0]);
+    audio = new Audio(http_fix(collection[0]));
     audioPlaying = false;
     let handler = ()=>{
         if(audioPlaying){

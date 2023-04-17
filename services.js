@@ -31,6 +31,7 @@ function services_html_change(){
             +"<div>preview_mp4: <input id='n_s_pv' list='p_m_l' type='text' value='"+ luckyapp_core.page_config.settings.preview_mp4 +"' onchange='settings_change(this)'></input></div>"
             +"<datalist id='p_m_l'><option value='preview.mp4'><option value='large.mp4'><option value='orig.mp4'></datalist>"
             +"<div>loading_info: <input id='n_s_li' type='checkbox' onchange='settings_change(this)'></input></div>"
+            +"<div>Alle daten als String in der Übersicht anzeigen: <input id='n_s_fid' type='checkbox' onchange='settings_change(this)'></input></div>"
         +"</div>"
         +"<div>"
             +"<h2>Zurücksetzen</h2>"
@@ -67,6 +68,7 @@ function services_html_change(){
 function services_html_script(){
     show_cache_size(document.getElementsByClassName("show_cache_size")[0]);
     document.getElementById("n_s_li").checked = luckyapp_core.page_config.settings.loading_info;
+    document.getElementById("n_s_fid").checked = luckyapp_core.page_config.settings.showData;
 }
 
 function services_start(){
@@ -96,7 +98,8 @@ function settings_init(){
             settings_version: settings_version,
             preview_img:"thumb.jpg",
             preview_mp4:"preview.mp4",
-            loading_info: true
+            loading_info: true,
+            showData: true
         }
         localStorage.setItem("Nasa_settings", JSON.stringify(luckyapp_core.page_config.settings));
     }
@@ -109,6 +112,8 @@ function settings_change(input){
         luckyapp_core.page_config.settings.preview_mp4 = input.value;
     }else if(input.id == "n_s_li"){
         luckyapp_core.page_config.settings.loading_info = input.checked;
+    }else if(input.id == "n_s_fid"){
+        luckyapp_core.page_config.settings.showData = input.checked;
     }
     localStorage.setItem("Nasa_settings", JSON.stringify(luckyapp_core.page_config.settings));
     info_show("Einstellungen gespeichert.","success");
