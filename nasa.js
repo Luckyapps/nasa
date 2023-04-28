@@ -312,7 +312,9 @@ audioPlaying = false;
 var audio, af = 0;
 
 function loadMediaPlayer(data, collection){
-    player.pause(player.currentAudio.id);
+    if(player.currentAudio.id){
+        player.pause(player.currentAudio.id);
+    }
     console.log(data);
     var mediaPlayer = document.getElementById("mediaPlayer");
     var audioTitle = document.getElementById("audioTitle");
