@@ -7,7 +7,7 @@ var updatelist_luckyapp = {
             name:"",
             date: "28.04.2023",
             type: "UPDATE",
-            description: "<ul><li>Neues Audioplayer gerüst</li><li>Der Audioplayer wurde erneuert</li></ul>"
+            description: "<ul><li>Neues Audioplayer gerüst <ul><li>Der Audioplayer wurde erneuert</li></ul></li></ul>"
         },{
             id: "dv.1.23041.1",
             title: "Nasa Update 1|Apr23",
