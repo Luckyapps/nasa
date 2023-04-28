@@ -140,7 +140,7 @@ async function info_open(url, index){
         }
         document.getElementById("fi_audio").style.display = "block";
         document.getElementById("fi_audio").onclick = ()=>{
-            initAudio(data.data[0], collection);
+            loadMediaPlayer(data.data[0], collection);
             }
     }else{
         document.getElementById("fi_description").innerHTML = data.data[0].description;
@@ -311,28 +311,19 @@ function http_fix(url){
 audioPlaying = false;
 var audio, af = 0;
 
-function initAudio(data, collection){
-    af++;
+function loadMediaPlayer(data, collection){
+    player.pause(player.currentAudio.id);
+    console.log(data);
     var mediaPlayer = document.getElementById("mediaPlayer");
     var audioTitle = document.getElementById("audioTitle");
     var audioPlaybutton = document.getElementById("audioPlaybutton");
+    audioPlaybutton.setAttribute("data-audio", data.nasa_id);
+    audioPlaybutton.classList.add("playbutton");
+    player.add(data.nasa_id,http_fix(collection[0]), data);
     audioTitle.innerHTML = data.title;
     audioPlaybutton.innerHTML = ">";
     mediaPlayer.style.display = "flex";
-    audio = new Audio(http_fix(collection[0]));
-    audioPlaying = false;
-    let handler = ()=>{
-        if(audioPlaying){
-            audio.pause();
-            audioPlaying = false;
-            audioPlaybutton.innerHTML = ">";
-        }else if(!audioPlaying){
-            audio.play();
-            audioPlaying = true;
-            audioPlaybutton.innerHTML = "||";
-        }
-    };
-    if(af<2){
-        audioPlaybutton.addEventListener("click",handler);
-    }
+    //audio = new Audio(http_fix(collection[0]));
 }
+
+function refreshPlaybar(audio){}

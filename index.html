@@ -67,9 +67,10 @@
                     active: true,
                     files: {
                         js_main: "nasa.js",
+                        js: ["stylesheets/audioPlayer/audioPlayer.js"],
                         css: ["nasa.css"]
                     }, //links absolut von luckyapp_core.js aus erstes js file muss js_main sein
-                    functions:["nasa_init"] //nur Name, ohne () |--> geht nur, wenn js_main bei files gesetzt ist
+                    functions:["nasa_init","loadPlaybuttons()"] //nur Name, ohne () |--> geht nur, wenn js_main bei files gesetzt ist
                 }
             },
             appearance: {
@@ -106,7 +107,7 @@
     <div id="mediaPlayer">
         <div id="audioTitle"></div>
         <div id="audioPlaybutton"></div>
-        <div id="mediaPlayerClose" onclick="audio.pause();document.getElementById('mediaPlayer').style.display = 'none'">X</div>
+        <div id="mediaPlayerClose" onclick="player.pause(player.currentAudio.id);document.getElementById('mediaPlayer').style.display = 'none'">X</div>
     </div>
 
     <div style="display: none;" class="n_flyin_close_back_init" id="n_flyin_background">

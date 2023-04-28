@@ -2,12 +2,19 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23042.1",
+            title: "Nasa Update 1|Apr23",
+            name:"",
+            date: "28.04.2023",
+            type: "UPDATE",
+            description: "<ul><li>Neues Audioplayer gerüst</li><li>Der Audioplayer wurde erneuert</li></ul>"
+        },{
             id: "dv.1.23041.1",
             title: "Nasa Update 1|Apr23",
             name:"",
             date: "17.04.2023",
             type: "UPDATE",
-            description: "<ul><li>Audio Bugfixes</li><li><Über eine neue Einstellung kann die Anzeige der Rohdaten deaktiviert werden./li></ul>"
+            description: "<ul><li>Audio Bugfixes</li><li>Über eine neue Einstellung kann die Anzeige der Rohdaten deaktiviert werden.</li></ul>"
         },{
             id: "dv.1.23031.1",
             title: "Nasa Update 1|Mär23",
