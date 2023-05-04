@@ -214,31 +214,31 @@ async function info_open(url, index, preloadedData, noHistory){
     var links_unknown = "";
     for(u=0;u<collection.length;u++){
         if(collection[u].includes("metadata.json")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Metadaten</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Metadaten</a></li>";
         }else if(collection[u].includes("orig.jpg")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Original JPG</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Original JPG</a></li>";
         }else if(collection[u].includes("large.jpg")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Gross JPG</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Gross JPG</a></li>";
         }else if(collection[u].includes("medium.jpg")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Medium JPG</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Medium JPG</a></li>";
         }else if(collection[u].includes("small.jpg")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Klein JPG</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Klein JPG</a></li>";
         }else if(collection[u].includes("thumb.jpg")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Thumb JPG</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Thumb JPG</a></li>";
         }else if(collection[u].includes("orig.tif")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Original TIFF</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Original TIFF</a></li>";
         }else if(collection[u].includes("large.mp4")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Grosses Video [mp4]</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Grosses Video [mp4]</a></li>";
         }else if(collection[u].includes("medium.mp4")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Mittelgrosses Video [mp4]</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Mittelgrosses Video [mp4]</a></li>";
         }else if(collection[u].includes("small.mp4")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Kleines Video [mp4]</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Kleines Video [mp4]</a></li>";
         }else if(collection[u].includes("orig.mp4")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Originalvideo [mp4]</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Originalvideo [mp4]</a></li>";
         }else if(collection[u].includes("preview.mp4")){
-            document.getElementById("fi_sources").innerHTML += "<li><a href='"+ collection[u] +"'>Previewvideo [mp4]</a></li>";
+            document.getElementById("fi_sources").innerHTML += "<li><a target='_blank' href='"+ collection[u] +"'>Previewvideo [mp4]</a></li>";
         }else{
-            links_unknown += "<li><a href='"+ collection[u] +"'>"+ collection[u] +"</a></li>";
+            links_unknown += "<li><a target='_blank' href='"+ collection[u] +"'>"+ collection[u] +"</a></li>";
         }
     }document.getElementById("fi_sources").innerHTML += links_unknown;
     n_flyin_open();

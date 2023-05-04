@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23051.2",
+            title: "Nasa Update 1|Mai23",
+            name: "Links in neuen Tabs öffnen",
+            date: "04.05.2023",
+            type: "Bugfix",
+            description: "<ul><li>Quelllinks werden ab sofort in einem neuen Tab geöffnet.</li></ul>"
+        },{
             id: "dv.1.23051.1",
             title: "Nasa Update 1|Mai23",
             name:"Verlauf",
