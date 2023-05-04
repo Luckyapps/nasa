@@ -3,8 +3,15 @@ var updatelist_luckyapp = {
     "content": [ 
         {
             id: "dv.1.23042.2",
-            title: "Nasa Update 1|Apr23",
-            name:"",
+            title: "Nasa Update 1|Mai23",
+            name:"Verlauf",
+            date: "04.05.2023",
+            type: "UPDATE",
+            description: "<ul><li>Verlauf wurde hinzugefügt. <ul><li>Er ist ganz unten um Service-Bereich zu finden.</li><li>Es wird ein Verlauf, der angezeigten Elemente gezeigt.</li></ul></li><li>Verschiedene Fehlerbehebungen und Designverbesserungen.</li></ul>"
+        },{
+            id: "dv.1.23042.2",
+            title: "Nasa Update 2|Apr23",
+            name:"New Player",
             date: "28.04.2023",
             type: "UPDATE",
             description: "<ul><li>Neues Audioplayer gerüst <ul><li>Der Audioplayer wurde erneuert</li></ul></li></ul>"

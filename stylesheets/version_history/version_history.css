@@ -30,7 +30,7 @@
     height: 100%;
     /*overflow: auto;*/
     align-items: start;
-    z-index: 999;
+    z-index: 930;
     background-color: rgba(0,0,0,0.7);
 }
 

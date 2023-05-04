@@ -62,6 +62,11 @@ function services_html_change(){
                 +"<li>IOS bugfixes</li>"
             +"</ul>"
         +"</div>"
+        +"<div>"
+            +"<h2>Verlauf</h2>"
+            +"<ul id='n_s_verlauf'></ul>"
+            +"<button onclick='deleteHistory(`ALL`);services_html_script();'>Verlauf Löschen</button>"
+        +"</div>"
         +"</div>";
 }
 
@@ -69,6 +74,17 @@ function services_html_script(){
     show_cache_size(document.getElementsByClassName("show_cache_size")[0]);
     document.getElementById("n_s_li").checked = luckyapp_core.page_config.settings.loading_info;
     document.getElementById("n_s_fid").checked = luckyapp_core.page_config.settings.showData;
+    if(localStorage.getItem("nasa_history")){
+        document.getElementById("n_s_verlauf").innerHTML = "";
+        JSON.parse(localStorage.getItem("nasa_history")).forEach(async element => {
+            //console.log(await get_data("https://images-api.nasa.gov/search?nasa_id="+ element));
+            /*var data = await get_data("https://images-api.nasa.gov/search?nasa_id="+ element);
+            console.log(data.collection.items[0]);*/
+            var data = "https://images-api.nasa.gov/search?nasa_id="+ element;
+            data = "`"+ data +"`";
+            document.getElementById("n_s_verlauf").innerHTML += "<li onclick='flyin_close();info_open("+ data +",0, undefined, true)'>"+ element +"</li>";
+        });
+    }
 }
 
 function services_start(){
@@ -77,12 +93,14 @@ function services_start(){
     //console.log(luckyapp_core);
     var version_display = document.getElementById("version_display");
     version_display.innerHTML = "Version: "+ luckyapp_core.page_config.version;
-    version_display.addEventListener("click",async ()=>{
-        services_html_change();
-        await flyin_open(services_html);
-        services_html_script();
-        load_updatelist(updatelist_luckyapp.content, "Luckyapp");
-    });
+    version_display.addEventListener("click",services_open);
+}
+
+async function services_open(){
+    services_html_change();
+    await flyin_open(services_html);
+    services_html_script();
+    load_updatelist(updatelist_luckyapp.content, "Luckyapp");
 }
 
 function settings_init(){

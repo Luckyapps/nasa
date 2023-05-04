@@ -26,6 +26,14 @@
     margin: 10px 0 10px 0;
 }
 
+#n_s_verlauf li{
+    cursor: pointer;
+}
+
+#n_s_verlauf li:hover{
+    color: #00ffff;
+}
+
 #content{
     overflow:visible;
 }

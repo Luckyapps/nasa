@@ -139,8 +139,8 @@ var luckyapp_core = {
                 var funclist = luckyapp_core.page_config.modules.fileloader.functions;
                 if(funclist != undefined){
                     if(luckyapp_core.loaded == true){
-                        for(i=0;i<funclist.length;i++){
-                            await window[funclist[i]]();
+                        for(i2=0;i2<funclist.length;i2++){
+                            await window[funclist[i2]]();
                         }
                         console.warn("[Luckyapp_core.modules.fileloader] Funktionen geladen");
                     }else{

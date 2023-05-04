@@ -82,10 +82,49 @@ async function next_page(source){
 }
 
 
-async function info_open(url, index){
-    var data = await get_data(url);
-    data = data.collection.items[index]; //komplettes item
-    console.log(data);
+function saveHistory(nasa_id){
+    if(localStorage.getItem("nasa_history")){
+        var content = JSON.parse(localStorage.getItem("nasa_history"));
+        content.unshift(nasa_id);
+        content = JSON.stringify(content);
+        localStorage.setItem("nasa_history", content);
+    }else{
+        localStorage.setItem("nasa_history",'["'+ nasa_id +'"]');
+    }
+}
+
+function deleteHistory(nasa_id){
+    if(localStorage.getItem("nasa_history")){
+        if(nasa_id!="ALL"){
+            var content = JSON.parse(localStorage.getItem("nasa_history"));
+            for(hi=0;hi<content.length;hi++){
+                if(content[hi]==nasa_id){
+                    content.splice(hi,1);
+                }
+            }
+            content = JSON.stringify(content);
+            localStorage.setItem("nasa_history", content);
+            info_show(nasa_id +" aus der Historie gelöscht");
+        }else{
+            localStorage.setItem("nasa_history", "[]");
+            info_show("Historie gelöscht");
+        }
+    }
+}
+
+
+async function info_open(url, index, preloadedData, noHistory){ 
+    if(preloadedData){
+        data = preloadedData;
+    }else{
+        var data = await get_data(url);
+        console.warn(data);
+        data = data.collection.items[index]; //komplettes item
+        console.log(data);
+    }
+    if(!noHistory){
+        saveHistory(data.data[0].nasa_id);
+    }
     var collection = await get_data(data.href); //collection des elements
     console.log(collection);
     document.getElementById("fi_title").innerHTML = data.data[0].title;
