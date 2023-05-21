@@ -48,7 +48,13 @@ function services_html_change(){
         +"<div>"
             +"<h2>Updates</h2>"
             +"<div>Zu einigen Updates sind keine genauen Angaben verf&uuml;gbar.</div>"
-            +"<ul id='updatelist'></ul>"
+                +"<ul id='updatelist'></ul>"
+            +"</div>"
+        +"<div>"
+            +"<h2>Verlauf</h2>"
+            +"<p>Hier wird der gesammte Verlauf aufgelistet. Auch die Namen von Elementen, die nicht geladen werden können sind aufgelistet."
+            +"<ul id='n_s_verlauf'></ul>"
+            +"<button onclick='deleteHistory(`ALL`);services_html_script();'>Verlauf Löschen</button>"
         +"</div>"
         +"<div>"
             +"<h2>Zuk&uuml;nftige 	&Auml;nderungen:</h2>"
@@ -61,11 +67,6 @@ function services_html_change(){
                 +"<li>Audio Support</li>"
                 +"<li>IOS bugfixes</li>"
             +"</ul>"
-        +"</div>"
-        +"<div>"
-            +"<h2>Verlauf</h2>"
-            +"<ul id='n_s_verlauf'></ul>"
-            +"<button onclick='deleteHistory(`ALL`);services_html_script();'>Verlauf Löschen</button>"
         +"</div>"
         +"</div>";
 }
@@ -93,7 +94,7 @@ function services_start(){
     //console.log(luckyapp_core);
     var version_display = document.getElementById("version_display");
     version_display.innerHTML = "Version: "+ luckyapp_core.page_config.version;
-    version_display.addEventListener("click",services_open);
+    version_display.addEventListener("click", services_open);
 }
 
 async function services_open(){

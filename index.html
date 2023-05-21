@@ -67,10 +67,10 @@
                     active: true,
                     files: {
                         js_main: "nasa.js",
-                        js: ["stylesheets/audioPlayer/audioPlayer.js"],
-                        css: ["nasa.css"]
+                        js: ["stylesheets/audioPlayer/audioPlayer.js","favoriten.js"],
+                        css: ["nasa.css","favoriten.css"]
                     }, //links absolut von luckyapp_core.js aus erstes js file muss js_main sein
-                    functions:["nasa_init","loadPlaybuttons"] //nur Name, ohne () |--> geht nur, wenn js_main bei files gesetzt ist
+                    functions:["nasa_init","loadPlaybuttons","init_favoriten"] //nur Name, ohne () |--> geht nur, wenn js_main bei files gesetzt ist
                 }
             },
             appearance: {
@@ -103,6 +103,8 @@
         </div> 
 
     </div>
+
+    <div id="favoriten_display">❤️</div>
 
     <div id="mediaPlayer">
         <div id="audioTitle"></div>

@@ -1,0 +1,49 @@
+#favoriten_display{
+    position: fixed;
+    background-color: gray;
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+    bottom: 10px;
+    right: 10px;
+    z-index: 498;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: font-size 0.3s ease-out;
+}
+
+.f_d_mousedown{
+    font-size:0.9em!important; 
+}
+
+.favoriten_shell{
+    margin-bottom: 30px;
+}
+
+.favoriten_content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:20px;
+}
+
+.f_card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    background-color: gray;
+    border-radius: 20px;
+    width: 300px;
+    cursor:pointer;
+}
+
+.f_card img{
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.f_card p{
+    padding: 0 20px 0 20px;
+}

@@ -245,11 +245,11 @@ function load_luckyapp_core(){
                 scriptLoader(luckyapp_core.page_config.source + luckyapp_core.modules[luckyapp_core.modules.keylist[i]].files.js_main, luckyapp_core.modules[luckyapp_core.modules.keylist[i]].start);
             }
             if(luckyapp_core.modules[luckyapp_core.modules.keylist[i]].files.js){ //Wenn js
-                loaded_modules_count++;
+                luckyapp_core.modules[luckyapp_core.modules.keylist[i]].files.js.forEach(function(src){loaded_modules_count++});
                 luckyapp_core.modules[luckyapp_core.modules.keylist[i]].files.js.forEach(function(src){scriptLoader(luckyapp_core.page_config.source + src, luckyapp_core.load_check)});
             }
             if(luckyapp_core.modules[luckyapp_core.modules.keylist[i]].files.css){ //Wenn css
-                loaded_modules_count++;
+                luckyapp_core.modules[luckyapp_core.modules.keylist[i]].files.css.forEach(function(src){loaded_modules_count++});
                 luckyapp_core.modules[luckyapp_core.modules.keylist[i]].files.css.forEach(function(src){cssLoader_(luckyapp_core.page_config.source + src, luckyapp_core.load_check)});
             }
         }

@@ -2,11 +2,18 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23052.1",
+            title: "Nasa Update 2|Mai23",
+            name: "Favoriten",
+            date: "22.05.2023",
+            type: "UPDATE",
+            description: "<ul><li>Favoriten und Verlauf: <ul><li>Es wurde ein neuer Button und ein neues Menü hinzugefügt, durch die aktuell der Verlauf und später auch Favoriten angezeigt werden können.</li></ul></li><li>Bugfix: <ul><li>Es wurde ein Ladefehler im Fileloader von luckyapp_core.js bzw. nasa_core.js behoben.</li></ul></li></ul>"
+        },{
             id: "dv.1.23051.2",
             title: "Nasa Update 1|Mai23",
             name: "Links in neuen Tabs öffnen",
             date: "04.05.2023",
-            type: "Bugfix",
+            type: "BUGFIX",
             description: "<ul><li>Quelllinks werden ab sofort in einem neuen Tab geöffnet.</li></ul>"
         },{
             id: "dv.1.23051.1",
