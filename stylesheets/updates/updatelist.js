@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23054.1",
+            title: "Nasa Update 4|Mai23",
+            name: "Ladebildschirmlogo",
+            date: "23.05.2023",
+            type: "UPDATE",
+            description: "<ul><li>Auf dem Ladebildschirm wird jetzt das NASA-Logo angezeigt.</li><li>Der Ladebildschirm ist länger zu sehen.</li><li>updates.js wurde auf die neuste Luckyapp version geupdated.</li></ul>"
+        },{
             id: "dv.1.23053.1",
             title: "Nasa Update 3|Mai23",
             name: "Bibliothek und Favoriten",
