@@ -140,9 +140,13 @@ button{
     width: 100%;
     border-radius: 20px 20px 0 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 0 10px 0 10px;
     box-sizing: border-box;
+}
+
+#n_flyin_favbut{
+    cursor:pointer;
 }
 
 #n_flyin_close{

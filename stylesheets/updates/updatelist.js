@@ -2,6 +2,13 @@ var updatelist_luckyapp = {
     "source": "Nasa",
     "content": [ 
         {
+            id: "dv.1.23053.1",
+            title: "Nasa Update 3|Mai23",
+            name: "Bibliothek und Favoriten",
+            date: "23.05.2023",
+            type: "UPDATE",
+            description: "<ul><li>Bibliothek <ul><li>Der Bereich Favoriten und Verlauf wurde in Bibliothek umbenannt.</li><li>Auf den Infoflyins können nun über das ❤️ Favoriten gesichert werden.</li></ul></li></ul>"
+        },{
             id: "dv.1.23052.1",
             title: "Nasa Update 2|Mai23",
             name: "Favoriten",

@@ -1,4 +1,4 @@
-#favoriten_display{
+#bibliothek_display{
     position: fixed;
     background-color: gray;
     padding: 5px;
@@ -16,18 +16,22 @@
     font-size:0.9em!important; 
 }
 
-.favoriten_shell{
+.bibliothek_shell{
     margin-bottom: 30px;
 }
 
-.favoriten_content{
+.bibliothek_shell h2{
+    text-decoration: none;
+}
+
+.bibliothek_content{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap:20px;
 }
 
-.f_card{
+.b_card{
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -39,11 +43,11 @@
     cursor:pointer;
 }
 
-.f_card img{
+.b_card img{
     max-width: 100%;
     border-radius: 20px;
 }
 
-.f_card p{
+.b_card p{
     padding: 0 20px 0 20px;
 }

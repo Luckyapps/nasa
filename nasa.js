@@ -14,6 +14,8 @@ function nasa_init(){
 
     document.getElementById("n_flyin_close").addEventListener("click", n_flyin_close);
     document.getElementById("n_flyin_background").addEventListener('click', container_clicked);
+
+    document.getElementById("n_flyin_favbut").addEventListener("click", favbut_clicked);
 }
 
 async function nasa_start(subject){
@@ -112,7 +114,7 @@ function deleteHistory(nasa_id){
     }
 }
 
-
+var currentData;
 async function info_open(url, index, preloadedData, noHistory){ 
     if(preloadedData){
         data = preloadedData;
@@ -125,6 +127,8 @@ async function info_open(url, index, preloadedData, noHistory){
     if(!noHistory){
         saveHistory(data.data[0].nasa_id);
     }
+    currentData = data;
+    loadFavbutStyle();
     var collection = await get_data(data.href); //collection des elements
     console.log(collection);
     document.getElementById("fi_title").innerHTML = data.data[0].title;
@@ -245,9 +249,9 @@ async function info_open(url, index, preloadedData, noHistory){
     info_hide();
 }
 
-async function get_data(url){
+async function get_data(url, noinfo){
     info_hide();
-    if(luckyapp_core.page_config.settings.loading_info){
+    if(luckyapp_core.page_config.settings.loading_info && noinfo!=true){
         info_show("Daten werden geladen...");
     }
     //var url = "https://www.faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt";
@@ -268,7 +272,7 @@ async function get_data(url){
 
     .then((data_text) => {data = JSON.parse(data_text)});
     info_hide();
-    if(luckyapp_core.page_config.settings.loading_info){
+    if(luckyapp_core.page_config.settings.loading_info && noinfo!=true){
         info_show("Daten geladen", "success");
     }
     return data;
@@ -334,6 +338,70 @@ function n_flyin_close(){
       document.body.style.overflow = "auto";
       document.getElementById("fi_img").outerHTML = "<img id='fi_img'></img>";
     }, /*timeout_duration*/500); 
+}
+
+async function favbut_clicked(){
+    if(!isFavorit(currentData.data[0].nasa_id)){
+        saveFavorit(currentData.data[0].nasa_id);
+    }else{
+        deleteFavorit(currentData.data[0].nasa_id);
+    }
+    loadFavbutStyle();
+}
+
+function loadFavbutStyle(){
+    var favbut = document.getElementById("n_flyin_favbut");
+    if(isFavorit(currentData.data[0].nasa_id)){
+        favbut.innerHTML = "❤️";
+    }else{
+        favbut.innerHTML = "🖤";
+    }
+}
+
+function isFavorit(nasa_id){
+    if(localStorage.getItem("nasa_favoriten")){
+        var content = JSON.parse(localStorage.getItem("nasa_favoriten"));
+        for(i=0;i<content.length;i++){
+            if(content[i]==nasa_id){
+                return true;
+            }
+        }
+        return false;
+    }else{
+        return false
+    }
+}
+
+function saveFavorit(nasa_id){
+    if(localStorage.getItem("nasa_favoriten")){
+        if(!isFavorit(nasa_id)){
+            var content = JSON.parse(localStorage.getItem("nasa_favoriten"));
+            content.unshift(nasa_id);
+            content = JSON.stringify(content);
+            localStorage.setItem("nasa_favoriten", content);
+        }
+    }else{
+        localStorage.setItem("nasa_favoriten",'["'+ nasa_id +'"]');
+    }
+}
+
+function deleteFavorit(nasa_id){
+    if(localStorage.getItem("nasa_favoriten")){
+        if(nasa_id!="ALL"){
+            var content = JSON.parse(localStorage.getItem("nasa_favoriten"));
+            for(hi=0;hi<content.length;hi++){
+                if(content[hi]==nasa_id){
+                    content.splice(hi,1);
+                }
+            }
+            content = JSON.stringify(content);
+            localStorage.setItem("nasa_favoriten", content);
+            info_show(nasa_id +" als Favorit gelöscht");
+        }else{
+            localStorage.setItem("nasa_favoriten", "[]");
+            info_show("Favoriten gelöscht");
+        }
+    }
 }
 
 function http_fix(url){
