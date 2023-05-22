@@ -26,65 +26,45 @@ async function start_updates_stylesheet(){
 }
 
 function load_updatelist(list, source, return_required){
-    //console.log("UPDATE");
-    if(source == "Luckyapp"){
-        updatelist = document.getElementById("updatelist");
-        for(i=0; i< list.length; i++){
-            var list_li = "";
+    updatelist = document.getElementById("updatelist");
+    for(i=0; i< list.length; i++){
+        var list_li = "";
+        if(source == "Luckyapp"){
             list_li = "<li onclick='updates_info_open(this)' value='"+ i +"'><h3>";
-            if(list[i].type == "UPDATE"){
-                list_li += "<font color='green'>"+ list[i].type +"</font>";
-            }else{
-                list_li += "<font color='green'>"+ list[i].type +"</font>";
-            }
-
-            if(list[i].date != undefined){
-                list_li += " ("+ list[i].date +")";
-            }
-
-            list_li += "<u>";
-
-            if(list[i].title != undefined){
-                list_li += " "+ list[i].title;
-            }else{
-                list_li += " "+ list[i].id;
-            }
-
-            if(list[i].name != undefined && list[i].name != ""){
-                list_li += " : "+ list[i].name;
-            }
-            list_li += "</u></h3></li>";
-            updatelist.innerHTML += list_li;
-        }
-    }else if(source == "Musik"){
-        updatelist = document.getElementById("updatelist");
-        for(i=0; i< list.length; i++){
-            var list_li = "";
+        }else if(source == "Musik"){
             list_li = "<li onclick='updates_info_open(this, `musik`)' value='"+ i +"'><h3>";
-            if(list[i].type == "UPDATE"){
-                list_li += "<font color='green'>"+ list[i].type +"</font>";
-            }else{
-                list_li += "<font color='green'>"+ list[i].type +"</font>";
-            }
-
-            if(list[i].date != undefined){
-                list_li += " ("+ list[i].date +")";
-            }
-
-            list_li += "<u>";
-
-            if(list[i].title != undefined){
-                list_li += " "+ list[i].title;
-            }else{
-                list_li += " "+ list[i].id;
-            }
-
-            if(list[i].name != undefined){
-                list_li += " : "+ list[i].name;
-            }
-            list_li += "</u></h3></li>";
-            updatelist.innerHTML += list_li;
+        }else{
+            list_li = "<li value='"+ i +"'><h3>";
         }
+        if(list[i].type == "UPDATE"){
+            list_li += "<font color='green'>"+ list[i].type +"</font>";
+        }else if(list[i].type == "BUGFIX"){
+            list_li += "<font color='yellow'>"+ list[i].type +"</font>";
+        }else if(list[i].type == "WARNING"){
+            list_li += "<font color='red'>"+ list[i].type +"</font>";
+        }else if(list[i].type == "INFO"){
+            list_li += "<font color='yellow'>"+ list[i].type +"</font>";
+        }else{
+            list_li += "<font color='green'>"+ list[i].type +"</font>";
+        }
+
+        if(list[i].date != undefined){
+            list_li += " ("+ list[i].date +")";
+        }
+
+        list_li += "<u>";
+
+        if(list[i].title != undefined){
+            list_li += " "+ list[i].title;
+        }else{
+            list_li += " "+ list[i].id;
+        }
+
+        if(list[i].name && list[i].name != ""){
+            list_li += " : "+ list[i].name;
+        }
+        list_li += "</u></h3></li>";
+        updatelist.innerHTML += list_li;
     }
 }
 

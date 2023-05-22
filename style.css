@@ -61,16 +61,16 @@ a:hover{
     height: 1em;
     width: 0%;
     border-radius: 10px;
-    transition: width 0.5s;
+    transition: width 1s;
     /*transition-property: width;
     transition-duration: 1s;*/
   }
   
   #ball{
-    display: none;
+    /*display: none;*/
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 150px;
+    height: 150px;
     border-radius: 100%;
     animation-name: jump;
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -80,7 +80,7 @@ a:hover{
   }
   
   @keyframes jump {
-    0%{top:0px;background-color:gray}
-    50%{top:-50px;background-color:gainsboro}
-    100%{top:0px;background-color:gray}
+    0%{top:0px;}
+    50%{top:-50px;}
+    100%{top:0px;}
   }
